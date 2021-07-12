@@ -1,4 +1,5 @@
 const mysql = require("../mysql");
+
 class Model {
   constructor(tableName, primaryKey, foreignKey, fields) {
     this.tableName = tableName;
@@ -13,15 +14,27 @@ class Model {
     return rows;
   };
 
-  getById = () => {};
+  getById = async (id) => {
+    const sql = `SELECT * FROM ${this.tableName} WHERE ${this.tableName}_id = ${id} `;
+    const [...rows] = await mysql.execute(sql);
+    return rows;
+  };
 
   loadByField = () => {};
 
-  create = () => {};
+  create = () => {
+    //`INSERT INTO ${this.tableName} () 
+  };
 
-  modify = () => {};
+  modify = () => {
+    //`UPDATE ${this.tableName} SET` 
+  };
 
-  delete = () => {};
+  delete = async (id) => {
+    const sql = `DELETE FROM ${this.tableName} WHERE ${this.tableName}_id = ${id}`
+    const [...rows] = await mysql.execute(sql);
+    return rows;
+  };
 }
 
 module.exports = Model;
