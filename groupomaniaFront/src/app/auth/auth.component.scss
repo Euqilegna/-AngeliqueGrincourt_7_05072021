@@ -1,0 +1,45 @@
+
+
+.container-fluid {
+  background-color: #273563;
+  height: 900px;
+}
+
+.auth {
+
+  &__box {
+    background-color: #e6e6e6; 
+    height: 500px;
+    border-radius: 30px;
+    width: 30%;
+    box-shadow: 1px 0px 20px black ;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__form{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #e6e6e6;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #dddddd  inset;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-form-field{
+  color: white;
+  width: 250px;
+}
+
