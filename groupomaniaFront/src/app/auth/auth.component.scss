@@ -1,45 +1,57 @@
-
-
-.container-fluid {
-  background-color: #273563;
-  height: 900px;
-}
-
 .auth {
-
   &__box {
-    background-color: #e6e6e6; 
-    height: 500px;
-    border-radius: 30px;
-    width: 30%;
-    box-shadow: 1px 0px 20px black ;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #c65960;
+    height: 600px;
+    border-radius: 20px;
+    width: 60%;
+    box-shadow: 0px 0px 20px 0px #091f438c;
+  }
+
+  &__leftSide {
+    width: 50%;
+    height: 100%;
+
+    &--backgroundImg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+  }
+
+  &__rigthSide {
+    width: 50%;
+    height: 65%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
   }
 
   &__icon {
-    display: flex;
-    justify-content: center;
   }
 
-  &__form{
-    display: flex;
-    justify-content: center;
+  &__form {
+    font-size: 15px;
+    font-weight: bold;
     text-align: center;
-    color: #e6e6e6;
   }
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #dddddd  inset;
+  -webkit-box-shadow: 0 0 0px 1000px #be565d inset;
 }
 
-.flex{
+.flex {
   display: flex;
-  align-items: center;
   justify-content: center;
+  margin-top: 5%;
 }
 
-.mat-form-field{
-  color: white;
-  width: 250px;
+.mat-form-field {
+  width: 350px;
 }
-

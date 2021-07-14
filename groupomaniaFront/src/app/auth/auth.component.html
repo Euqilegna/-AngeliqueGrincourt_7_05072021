@@ -1,32 +1,35 @@
 <div class="container-fluid">
     <div class="flex">
         <div class="auth__box">
-            <span class="auth__icon">
-                <img src="/assets/img/icon-left-font-monochrome-white.png" width="250">
-            </span>
-            <div class="auth__form">
-                <form>
-                    <div class="title"> S'identifier : </div>
-                    <div class="example-container">
-                        <mat-form-field appearance="fill">
-                            <mat-label> Identifiant </mat-label>
-                            <input matInput type="text" id="email" class="form-control form" name="email" ngModel
-                                required placeholder="email" required>
-                            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-                        </mat-form-field>
-                    </div>
-                    <div class="example-container">
-                        <mat-form-field appearance="fill">
-                            <mat-label> Mot de passe : </mat-label>
-                            <input matInput [type]="hide ? 'password' : 'text'">
-                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                                [attr.aria-pressed]="hide">
-                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                            </button>
-                        </mat-form-field>
-                    </div>
-                    <div class="text"> Vous n'avez pas encore de compte ? Inscrivez vous ! </div>
-                </form>
+            <div class="auth__leftSide">
+                <img class="auth__leftSide--backgroundImg" src="/assets/img/pexels-photo-3183186.jpeg">
+            </div>
+            <div class="auth__rigthSide">
+                <span class="auth__icon">
+                    <img src="/assets/img/icon-left-font-monochrome-black.png" width="350">
+                </span>
+
+                <div class="auth__form">
+                    <form>
+                        <div class="example-container">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Email</mat-label>
+                                <input matInput placeholder="" required>
+                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="example-container">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Mot de passe : </mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" required>
+
+
+
+                            </mat-form-field>
+                        </div>
+                        <div class="text"> Vous n'avez pas encore de compte ? Inscrivez vous ! </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
