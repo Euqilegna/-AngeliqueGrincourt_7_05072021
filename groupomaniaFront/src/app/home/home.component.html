@@ -1,1 +1,30 @@
-<p>home works!</p>
+<div class="container-fluid">
+    <div class="dashboard">
+        <div class="auth__box">
+            <div class="auth__leftSide">
+                <img class="auth__leftSide--logo" src="/assets/img/icon-left-font-monochrome-black.png">
+                <div class="account">
+                    <p> Compte : </p>
+                    <mat-icon>home</mat-icon>
+                    <a [routerLink]="['/home']">
+                        Home
+                    </a>
+                    <mat-icon>person</mat-icon>
+                    <a [routerLink]="['/userProfil']">
+                        Mon compte
+                    </a>
+                </div>
+            </div>
+            <div class="auth__center">
+               
+            </div>
+            <div class="auth__rigthSide">
+                <span class="auth__icon">
+                </span>
+
+                <div class="auth__form">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

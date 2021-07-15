@@ -1,0 +1,57 @@
+.dashboard {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.auth {
+    &__box {
+        display: flex;
+        align-items: center;
+        height: 800px;
+        border-radius: 70px;
+        width: 95%;
+        box-shadow: 0px 0px 20px 0px #091f438c;
+        background-color: #ececec;
+    }
+
+    &__leftSide {
+        width: 25%;
+        height: 95%;
+        margin-left: 15px;
+        background-color: #bb4e56;
+        border-radius: 60px;
+        &--logo {
+            width: 60%;
+            margin: 55px 60px;
+        }
+    }
+
+    &__center {
+        width: 55%;
+        height: 95%;
+    }
+    
+    &__rigthSide {
+        width: 25%;
+        height: 95%;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-top-right-radius: 60px;
+        border-bottom-right-radius: 60px;
+        background-color: #091f43
+    }
+
+    &__form {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+.account {
+    display: flex;
+    flex-direction: column;
+}

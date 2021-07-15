@@ -10,21 +10,22 @@
                 </span>
 
                 <div class="auth__form">
-                    <form>
+                    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
                         <div class="example-container">
                             <mat-form-field appearance="fill">
                                 <mat-label>Email</mat-label>
-                                <input matInput placeholder="" required>
+                                <input matInput placeholder="" name="email" ngModel required>
                                 <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                             </mat-form-field>
                         </div>
                         <div class="example-container">
                             <mat-form-field appearance="fill">
                                 <mat-label>Mot de passe : </mat-label>
-                                <input matInput [type]="hide ? 'password' : 'text'" required>
+                                <input matInput [type]="hide ? 'password' : 'text'" name="password" ngModel required>
                             </mat-form-field>
                         </div>
-                        <div class="text"> Vous n'avez pas encore de compte ? Inscrivez vous ! </div>
+                        <button mat-button type="submit"> Se connecter </button>
+                        <div class="text"> Vous n'avez pas encore de compte ? <a [routerLink]="['/subscription']"> Inscrivez vous </a> ! </div>
                     </form>
                 </div>
             </div>

@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="flex">
+        <div class="auth__box">
+            <div class="auth__leftSide">
+                <img class="auth__leftSide--backgroundImg" src="/assets/img/pexels-photo-3183186.jpeg">
+            </div>
+            <div class="auth__rigthSide">
+                <span class="auth__icon">
+                    <img src="/assets/img/icon-left-font-monochrome-black.png" width="350">
+                </span>
+
+                <div class="auth__form">
+                    <form [formGroup]="userSubscription" (ngSubmit)="onSubmitSub()"> 
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label> Nom</mat-label>
+                            <input matInput  formControlName="lastName">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label> Prénom </mat-label>
+                            <input matInput  formControlName="firstName"> 
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label> Adresse email </mat-label>
+                            <input matInput  formControlName="email">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label> Mot de passe </mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"  required>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label> Date d'anniversaire </mat-label>
+                            <input matInput [matDatepicker]="picker"  formControlName="birthday"> 
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <button mat-button type="submit"> Créer mon compte </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

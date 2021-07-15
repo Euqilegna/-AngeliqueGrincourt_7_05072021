@@ -9,9 +9,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SubscriptionComponent } from './subscription/subscription.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { UserProfilComponent } from './user-profil/user-profil.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, HomeComponent],
+  declarations: [AppComponent, AuthComponent, HomeComponent, SubscriptionComponent, UserProfilComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,8 +25,19 @@ import { MatInputModule } from '@angular/material/input';
     BrowserAnimationsModule,
     MatIconModule,
     MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    MatNativeDateModule,
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: 'fr-FR',
+    },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
