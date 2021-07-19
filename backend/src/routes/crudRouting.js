@@ -42,12 +42,16 @@ for (const mapping of pathList) {
   //POST
   router.post(`${baseUrl}/list`, async (req, res) => {
     console.log("post list", baseUrl);
-
+    const model = new Model();
+    const data = await model.getByField(req.body)
     res.json(data);
   });
 
   router.post(`${baseUrl}`, async (req, res) => {
     console.log("post", baseUrl);
+    const model = new Model();
+    console.log(req.body)
+    const data = await model.create(req.body)
     res.json(data);
   });
 
@@ -55,6 +59,8 @@ for (const mapping of pathList) {
   //PUT
   router.put(`${baseUrl}/:id`, async (req, res) => {
     console.log("put", baseUrl);
+    const model = new Model();
+    const data = await model.modify(req.body)
     res.json(data);
   });
 
