@@ -15,6 +15,7 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { UserProfilComponent } from './user-profil/user-profil.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent, AuthComponent, HomeComponent, SubscriptionComponent, UserProfilComponent],
@@ -29,7 +30,8 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     MatNativeDateModule,

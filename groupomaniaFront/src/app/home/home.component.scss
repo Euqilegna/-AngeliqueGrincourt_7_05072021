@@ -1,57 +1,182 @@
 .dashboard {
-    display: flex;
-    justify-content: center;
-    margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  background-color: #e5efffa1;
 }
 
 .auth {
-    &__box {
-        display: flex;
-        align-items: center;
-        height: 800px;
-        border-radius: 70px;
-        width: 95%;
-        box-shadow: 0px 0px 20px 0px #091f438c;
-        background-color: #ececec;
-    }
+  &__box {
+    display: flex;
+    align-items: center;
+    height: 900px;
+    border-radius: 70px;
+    width: 100%;
+    background-color: #f6faff;
+    margin: 2%;
+    font-family: "Nunito";
+  }
 
-    &__leftSide {
-        width: 25%;
-        height: 95%;
-        margin-left: 15px;
-        background-color: #bb4e56;
-        border-radius: 60px;
-        &--logo {
-            width: 60%;
-            margin: 55px 60px;
-        }
+  &__leftSide {
+    width: 25%;
+    height: 95%;
+    margin-left: 15px;
+    background-color: #ffffff;
+    border-radius: 60px;
+    &--logo {
+      width: 60%;
     }
+  }
 
-    &__center {
-        width: 55%;
-        height: 95%;
-    }
-    
-    &__rigthSide {
-        width: 25%;
-        height: 95%;
-        margin-right: 15px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        border-top-right-radius: 60px;
-        border-bottom-right-radius: 60px;
-        background-color: #091f43
-    }
+  &__center {
+    width: 55%;
+    height: 95%;
+    background-color: #f6faff;
+  }
 
-    &__form {
-        font-size: 15px;
-        font-weight: bold;
-        text-align: center;
-    }
+  &__rigthSide {
+    width: 25%;
+    height: 95%;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+  }
+
+  &__form {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+  }
 }
 
 .account {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 30%;
+  margin-top: 15%;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  justify-content: space-between;
+  a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.boxLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.icon {
+  font-size: 25px;
+  margin-right: 50px;
+}
+
+.profilPicture {
+  width: 70px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 15px;
+}
+
+.auth__icon {
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.welcomeMsg {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.headerOfFeed {
+  margin-top: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.myTeam {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pictureTeam {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.search {
+  position: relative;
+  background-color: white;
+  border-radius: 20px;
+  padding: 11px 25px;
+  width: 30%;
+  margin-left: 25px;
+  font-family: "Nunito";
+  font-size: 15px;
+}
+
+.iconSearch {
+  position: absolute;
+  font-size: 20px;
+  color: #575757;
+  right: 10%;
+}
+
+.post {
+  width: 75%;
+  background-color: #ffa3a3;
+  border-radius: 30px;
+  padding: 30px;
+  margin-top: 5%;
+}
+
+.postFeed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.postTitle {
+  background-color: white;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.postContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }

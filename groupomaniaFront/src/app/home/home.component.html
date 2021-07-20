@@ -2,27 +2,120 @@
     <div class="dashboard">
         <div class="auth__box">
             <div class="auth__leftSide">
-                <img class="auth__leftSide--logo" src="/assets/img/icon-left-font-monochrome-black.png">
+                <span class="boxLogo">
+                    <img class="auth__leftSide--logo" src="/assets/img/icon-left-font-monochrome-black.png">
+                </span>
                 <div class="account">
-                    <p> Compte : </p>
-                    <mat-icon>home</mat-icon>
-                    <a [routerLink]="['/home']">
-                        Home
-                    </a>
-                    <mat-icon>person</mat-icon>
-                    <a [routerLink]="['/userProfil']">
-                        Mon compte
-                    </a>
+                    <span class="link">
+                        <fa-icon class="icon" [icon]="faHome"> </fa-icon>
+                        <a [routerLink]="['/home']">
+                            Home
+                        </a>
+                    </span>
+                    <span class="link">
+                        <fa-icon class="icon" [icon]="faUser"> </fa-icon>
+                        <a [routerLink]="['/userProfil']">
+                            Mon compte
+                        </a>
+                    </span>
+                    <span class="link">
+                        <fa-icon class="icon" [icon]="faCogs"></fa-icon>
+                        <a [routerLink]="['/']">
+                            Paramètres
+                        </a>
+                    </span>
+                </div>
+                <div class="myTeam">
+                    COLLABORATEURS
+                    <div class="pictureTeam">
+                        <img class="profilPicture" src="/assets/img/pp.png">
+                        <img class="profilPicture" src="/assets/img/pp.png">
+                        <img class="profilPicture" src="/assets/img/pp.png">
+                        <img class="profilPicture" src="/assets/img/pp.png">
+                    </div>
                 </div>
             </div>
             <div class="auth__center">
-               
+                <div class="headerOfFeed">
+                    <div class="search">
+                        Recherche 
+                        <fa-icon class="iconSearch" [icon]="faSearch">
+                        </fa-icon>
+                    </div>
+                    <div class="welcomeMsg">
+                        Bienvenue Angélique !
+                        <!-- <img class="profilPicture" src="/assets/img/pp.png"> -->
+                    </div>
+                </div>
+                <div class="postFeed">
+                    <div class="post">
+                        <div class="postTitle">
+                            Je test un post
+                        </div>
+                        <div class="postContent">
+                            <img class="imgPost" src="/assets/img/lol.jpg" width="350">
+                        </div>
+                        <div class="comment">
+                            <div class="">
+                                J'aime : 1
+                            </div> 
+                            <div class="">
+                               Commentaire 5
+                            </div>
+                        </div>
+                        <div class="rowComment">
+                            <div class="like">
+                                J'aime
+                            </div>
+                            <div class="comment">
+                                Commantaire
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="postTitle">
+                            Je test un post
+                        </div>
+                        <div class="postContent">
+                            Coucou
+                        </div>
+                        <div class="comment">
+                            NOMBRE DE J'AIME / NOMBRE DE COMMENTAIRE
+                        </div>
+                        <div class="rowComment">
+                            <div class="like">
+                                J'aime
+                            </div>
+                            <div class="comment">
+                                Commantaire
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="postTitle">
+                            Je test un post
+                        </div>
+                        <div class="postContent">
+                            Coucou
+                        </div>
+                        <div class="comment">
+                            NOMBRE DE J'AIME / NOMBRE DE COMMENTAIRE
+                        </div>
+                        <div class="rowComment">
+                            <div class="like">
+                                J'aime
+                            </div>
+                            <div class="comment">
+                                Commantaire
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="auth__rigthSide">
-                <span class="auth__icon">
-                </span>
-
-                <div class="auth__form">
+                <div class="auth__icon">
+                    <fa-icon class="icon" [icon]="faBell"></fa-icon>
+                    <fa-icon class="icon" [icon]="faPowerOff"></fa-icon>
                 </div>
             </div>
         </div>
