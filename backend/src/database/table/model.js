@@ -9,6 +9,7 @@ class Model {
     this.data = {};
   }
 
+  // ?
   set = (data) => {
     if (!data) return;
     for (let [key, value] of Object.entries(data)) {
@@ -22,8 +23,9 @@ class Model {
     return rows;
   };
 
+  
   getById = async (id) => {
-    const sql = `SELECT * FROM ${this.tableName} WHERE ${this.primaryKey} = ?`;
+    const sql = `SELECT * FROM ${this.tableName} WHERE ${this.primaryKey} = ?`; // "?" au lieu de passer l'id pour eviter les injections sql
     const [...rows] = await mysql.execute(sql, [id]);
     return rows;
   };
@@ -35,6 +37,7 @@ class Model {
   getByField = async (fields) => {
     let sql = `SELECT * FROM ${this.tableName} WHERE 1=1 `;
     const values = [];
+    //destructuration 
     for (let [key, value] of Object.entries(fields)) {
       sql += `AND ${key} = ? `;
       values.push(value);
@@ -78,8 +81,8 @@ class Model {
   };
 
   delete = async (id) => {
-    const sql = `DELETE FROM ${this.tableName} WHERE ${this.primaryKey} = ${id}`;
-    const [...rows] = await mysql.execute(sql);
+    const sql = `DELETE FROM ${this.tableName} WHERE ${this.primaryKey} = ?`;
+    const [...rows] = await mysql.execute(sql, [id]);
     return rows;
   };
 
