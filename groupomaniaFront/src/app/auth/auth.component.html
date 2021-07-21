@@ -24,8 +24,9 @@
                                 <input matInput [type]="hide ? 'password' : 'text'" name="password" ngModel required>
                             </mat-form-field>
                         </div>
-                        <button mat-button type="submit"> Se connecter </button>
-                        <div class="text"> Vous n'avez pas encore de compte ? <a [routerLink]="['/subscription']"> Inscrivez vous </a> ! </div>
+                        <button mat-button type="submit"> <a [routerLink]="['/home']"> Se connecter </a> </button>
+                        <div class="text"> Vous n'avez pas encore de compte ? <a [routerLink]="['/subscription']">
+                                Inscrivez vous </a> ! </div>
                     </form>
                 </div>
             </div>
