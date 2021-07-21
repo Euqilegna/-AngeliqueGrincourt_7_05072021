@@ -5,6 +5,8 @@ import { faCogs } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,8 @@ export class HomeComponent implements OnInit {
   faCogs = faCogs;
   faBell = faBell;
   faPowerOff = faPowerOff;
-  faSearch = faSearch
+  faSearch = faSearch;
+  faThumbsUp = faThumbsUp;
 
 
   constructor() {}

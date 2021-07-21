@@ -1,7 +1,7 @@
 .dashboard {
   display: flex;
   justify-content: center;
-  background-color: #e5efffa1;
+  background-color: #9dc3ffa1;
 }
 
 .auth {
@@ -16,14 +16,14 @@
     font-family: "Nunito";
   }
 
-  &__leftSide {
+  &__Side {
     width: 25%;
     height: 95%;
-    margin-left: 15px;
-    background-color: #ffffff;
+    margin: 0 15px;
+    background-color: #f6faff;
     border-radius: 60px;
     &--logo {
-      width: 60%;
+      width: 80%;
     }
   }
 
@@ -31,17 +31,6 @@
     width: 55%;
     height: 95%;
     background-color: #f6faff;
-  }
-
-  &__rigthSide {
-    width: 25%;
-    height: 95%;
-    margin-right: 15px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    border-top-right-radius: 60px;
-    border-bottom-right-radius: 60px;
   }
 
   &__form {
@@ -94,10 +83,10 @@
 }
 
 .auth__icon {
-  width: 75%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  margin-top: 25px;
 }
 
 .welcomeMsg {
@@ -162,12 +151,6 @@
   flex-wrap: wrap;
 }
 
-.postTitle {
-  background-color: white;
-  padding: 10px;
-  border-radius: 20px;
-}
-
 .postContent {
   display: flex;
   align-items: center;
@@ -179,4 +162,46 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.rowInfoPost {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.iconThumb {
+  font-size: 18px;
+}
+
+.writeAComment {
+  margin-top: 20px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.postComment {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
+  background-color: #eed2fa;
+  border-radius: 30px;
+  padding: 0 10px;
+  margin: 10px;
+}
+
+.authorOfComment {
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.imgComment {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 9px;
 }
