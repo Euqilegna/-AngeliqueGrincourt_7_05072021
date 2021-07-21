@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faCogs } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -20,10 +21,15 @@ export class HomeComponent implements OnInit {
   faBell = faBell;
   faPowerOff = faPowerOff;
   faSearch = faSearch;
-  faThumbsUp = faThumbsUp;
+  
+  href : string = ""
+  constructor(
+    private router: Router
+  ) {}
 
-
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.href = this.router.url;
+    console.log(this.href)
+  }
 }
+

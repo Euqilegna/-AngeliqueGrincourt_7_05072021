@@ -16,9 +16,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { UserProfilComponent } from './user-profil/user-profil.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PostFeedComponent } from './post-feed/post-feed.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, HomeComponent, SubscriptionComponent, UserProfilComponent],
+  declarations: [AppComponent, AuthComponent, HomeComponent, SubscriptionComponent, UserProfilComponent, PostFeedComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

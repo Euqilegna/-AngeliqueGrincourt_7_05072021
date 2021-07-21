@@ -1,0 +1,70 @@
+<div class="createAPost">
+    <form class="createAPost__writeAPost">
+        <input class="createAPost__input" placeholder="Publier un post" type="text" name="post">
+    </form>
+    <div class="createAPost__rowButtons">
+        <button mat-button class="createAPost__btn">GIF</button>
+        <button mat-button class="createAPost__btn">Publier</button>
+    </div>
+</div>
+<div class="postFeed">
+    <div class="post">
+        <div class="post__postTitle">
+            Titre du post
+        </div>
+        <div class="post__postContent">
+            <img class="imgPost" src="/assets/img/lol.jpg" width="350">
+        </div>
+        <div class="rowInfoPost">
+            <div class="rowInfoPost__likes">
+                <fa-icon class="iconThumb" [icon]="faThumbsUp"></fa-icon> 1
+            </div>
+            <div class="rowInfoPost__comments">
+                Commentaires : 5
+            </div>
+        </div>
+        <form class="writeAComment">
+            <input class="writeAComment__input" placeholder="Rédiger un commentaire" type="text" name="search">
+        </form>
+        <div class="post__postComments">
+            <div class="post__postComment">
+                <img class="post__imgComment" src="/assets/img/pp.png" width="350">
+                <span class="authorOfComment"> Angélique Grincourt :</span>
+                <span class="contentOfComment"> Whaou trop rigolo </span>
+            </div>
+            <div class="post__postComment">
+                <img class="post__imgComment" src="/assets/img/profil1.jpg" width="350">
+                <span class="authorOfComment"> Martin Dupont :</span>
+                <span class="contentOfComment"> Ahahah </span>
+            </div>
+        </div>
+    </div>
+    <div class="post">
+        <div class="post__postTitle">
+            Titre du post
+        </div>
+        <div class="post__postContent">
+            <img class="post__imgPost" src="/assets/img/lol.jpg" width="350">
+        </div>
+        <div class="rowInfoPost">
+            <div class="likes">
+                <fa-icon class="iconThumb" [icon]="faThumbsUp"></fa-icon> 1
+            </div>
+            <div class="comments">
+                Commentaires : 5
+            </div>
+        </div>
+        <div class="post__postComments">
+            <div class="post__postComment">
+                <img class="post__imgComment" src="/assets/img/pp.png" width="350">
+                <span class="authorOfComment"> Angélique Grincourt :</span>
+                <span class="contentOfComment"> Whaou trop rigolo </span>
+            </div>
+            <div class="post__postComment">
+                <img class="post__imgComment" src="/assets/img/profil1.jpg" width="350">
+                <span class="authorOfComment"> Martin Dupont :</span>
+                <span class="contentOfComment"> Ahahah </span>
+            </div>
+        </div>
+    </div>
+</div>

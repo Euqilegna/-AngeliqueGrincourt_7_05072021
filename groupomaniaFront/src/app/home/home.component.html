@@ -1,9 +1,9 @@
 <div class="container-fluid">
     <div class="dashboard">
-        <div class="auth__box">
-            <div class="auth__Side">
+        <div class="home__box">
+            <div class="home__Side">
                 <span class="boxLogo">
-                    <img class="auth__Side--logo" src="/assets/img/icon-left-font-monochrome-black.png">
+                    <img class="home__Side--logo" src="/assets/img/icon-left-font-monochrome-black.png">
                 </span>
                 <div class="account">
                     <span class="link">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="auth__center">
+            <div class="home__center">
                 <div class="headerOfFeed">
                     <form class="search">
                         <input class="search__input" placeholder="Rechercher" type="text" name="search">
@@ -47,85 +47,11 @@
                         <!-- <img class="profilPicture" src="/assets/img/pp.png"> -->
                     </div>
                 </div>
-                <div class="createAPost">
-                    <form class="createAPost__writeAPost">
-                        <input class="createAPost__input" placeholder="Publier un post" type="text" name="post">
-                    </form>
-                    <div class="createAPost__rowButtons">
-                        <button mat-button class="createAPost__btn">GIF</button>
-                        <button mat-button class="createAPost__btn">Publier</button>
-                    </div>
-                </div>
-
-                <div class="postFeed">
-
-                    <div class="post">
-                        <div class="postTitle">
-                            Titre du post
-                        </div>
-                        <div class="postContent">
-                            <img class="imgPost" src="/assets/img/lol.jpg" width="350">
-                        </div>
-                        <div class="rowInfoPost">
-                            <div class="likes">
-                                <fa-icon class="iconThumb" [icon]="faThumbsUp"></fa-icon> 1
-                            </div>
-                            <div class="comments">
-                                Commentaires : 5
-                            </div>
-                        </div>
-                        <form class="writeAComment">
-                            <input class="writeAComment__input" placeholder="Rédiger un commentaire" type="text" name="search">
-                        </form>
-                        <div class="postComments">
-                            <div class="postComment">
-                                <img class="imgComment" src="/assets/img/pp.png" width="350">
-                                <span class="authorOfComment"> Angélique Grincourt :</span>
-                                <span class="contentOfComment"> Whaou trop rigolo </span>
-                            </div>
-                            <div class="postComment">
-                                <img class="imgComment" src="/assets/img/profil1.jpg" width="350">
-                                <span class="authorOfComment"> Martin Dupont :</span>
-                                <span class="contentOfComment"> Ahahah </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div class="postTitle">
-                            Titre du post
-                        </div>
-                        <div class="postContent">
-                            <img class="imgPost" src="/assets/img/lol.jpg" width="350">
-                        </div>
-                        <div class="rowInfoPost">
-                            <div class="likes">
-                                <fa-icon class="iconThumb" [icon]="faThumbsUp"></fa-icon> 1
-                            </div>
-                            <div class="comments">
-                                Commentaires : 5
-                            </div>
-                        </div>
-
-                        <!-- <div class="writeAComment">
-                            Rédiger un commentaire
-                        </div> -->
-                        <div class="postComments">
-                            <div class="postComment">
-                                <img class="imgComment" src="/assets/img/pp.png" width="350">
-                                <span class="authorOfComment"> Angélique Grincourt :</span>
-                                <span class="contentOfComment"> Whaou trop rigolo </span>
-                            </div>
-                            <div class="postComment">
-                                <img class="imgComment" src="/assets/img/profil1.jpg" width="350">
-                                <span class="authorOfComment"> Martin Dupont :</span>
-                                <span class="contentOfComment"> Ahahah </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <app-post-feed></app-post-feed>
+                <!-- <app-user-profil></app-user-profil> -->
             </div>
-            <div class="auth__Side">
-                <div class="auth__icon">
+            <div class="home__Side">
+                <div class="home__icon">
                     <fa-icon class="icon" [icon]="faBell"></fa-icon>
                     <a [routerLink]="['/auth']">
                         <fa-icon class="icon" [icon]="faPowerOff"></fa-icon>
@@ -138,7 +64,7 @@
                             Forum Mèmes
                         </div>
                         <div class="card__contentCard">
-                            <span> Rejoingnez le forum spécial Mèmes ! </span>
+                            <span> Rejoingnez le forum spécial Mèmes! </span>
                             <img class="card__img" src="/assets/img/lol.png">
                         </div>
                     </div>
