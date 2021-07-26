@@ -10,31 +10,34 @@
                 </span>
 
                 <div class="auth__form">
-                    <form [formGroup]="userSubscription" (ngSubmit)="onSubmitSub()"> 
+                    <form [formGroup]="userSubscription" (ngSubmit)="onSubmitSub()">
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label> Nom</mat-label>
-                            <input matInput  formControlName="lastName">
+                            <input matInput formControlName="lastName">
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label> Prénom </mat-label>
-                            <input matInput  formControlName="firstName"> 
+                            <input matInput formControlName="firstName">
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label> Adresse email </mat-label>
-                            <input matInput  formControlName="email">
+                            <input matInput formControlName="email">
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label> Mot de passe </mat-label>
-                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"  required>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
                         </mat-form-field>
                         <mat-form-field appearance="fill">
                             <mat-label> Date d'anniversaire </mat-label>
-                            <input matInput [matDatepicker]="picker"  formControlName="birthday"> 
+                            <input matInput [matDatepicker]="picker" formControlName="birthday">
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
                         <button mat-button type="submit"> Créer mon compte </button>
+                        <div class="text"> Vous avez déjà un compte ? <a [routerLink]="['/auth']">
+                                Connectez-vous </a> ! </div>
                     </form>
+
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@
         align-items: center;
         justify-content: space-between;
         background-color: #c65960;
-        height: 600px;
+        height: 700px;
         border-radius: 20px;
         width: 80%;
         box-shadow: 0px 0px 20px 0px #091f438c;
@@ -37,7 +37,6 @@
 
     &__form {
         font-size: 15px;
-        font-weight: bold;
         text-align: center;
         display: flex;
 
@@ -67,3 +66,10 @@ form {
     display: flex;
     flex-direction: column;
 }
+
+
+a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+  }

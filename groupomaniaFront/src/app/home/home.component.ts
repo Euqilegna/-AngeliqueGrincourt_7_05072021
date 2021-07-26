@@ -6,6 +6,7 @@ import { faCogs } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   faBell = faBell;
   faPowerOff = faPowerOff;
   faSearch = faSearch;
+  faTrashAlt = faTrashAlt
 
   witchCompo : string = ''
 

@@ -9,8 +9,11 @@
 </div>
 <div class="postFeed">
     <div class="post">
-        <div class="post__postTitle">
-            Titre du post
+        <div class="post__headerpost">
+            <div class="post__postTitle">
+                Titre du post
+            </div>
+            <fa-icon [icon]="faTrashAlt"></fa-icon>
         </div>
         <div class="post__postContent">
             <img class="imgPost" src="/assets/img/lol.jpg" width="350">
@@ -31,14 +34,23 @@
                 <img class="post__imgComment" src="/assets/img/pp.png" width="350">
                 <span class="authorOfComment"> Angélique Grincourt :</span>
                 <span class="contentOfComment"> Whaou trop rigolo </span>
+                <span class="trashIcon">
+                    <fa-icon [icon]="faTrashAlt"></fa-icon>
+                </span>
             </div>
-            <div class="post__postComment">
-                <img class="post__imgComment" src="/assets/img/profil1.jpg" width="350">
-                <span class="authorOfComment"> Martin Dupont :</span>
-                <span class="contentOfComment"> Ahahah </span>
-            </div>
+
         </div>
+        <div class="post__postComment">
+            <img class="post__imgComment" src="/assets/img/profil1.jpg" width="350">
+            <span class="authorOfComment"> Martin Dupont :</span>
+            <span class="contentOfComment"> Ahahah </span>
+            <span class="trashIcon">
+                <fa-icon [icon]="faTrashAlt"></fa-icon>
+            </span>
+        </div>
+
     </div>
+
     <div class="post">
         <div class="post__postTitle">
             Titre du post
@@ -59,11 +71,17 @@
                 <img class="post__imgComment" src="/assets/img/pp.png" width="350">
                 <span class="authorOfComment"> Angélique Grincourt :</span>
                 <span class="contentOfComment"> Whaou trop rigolo </span>
+                <span class="trashIcon">
+                    <fa-icon [icon]="faTrashAlt"></fa-icon>
+                </span>
             </div>
             <div class="post__postComment">
                 <img class="post__imgComment" src="/assets/img/profil1.jpg" width="350">
                 <span class="authorOfComment"> Martin Dupont :</span>
                 <span class="contentOfComment"> Ahahah </span>
+                <span class="trashIcon">
+                    <fa-icon [icon]="faTrashAlt"></fa-icon>
+                </span>
             </div>
         </div>
     </div>

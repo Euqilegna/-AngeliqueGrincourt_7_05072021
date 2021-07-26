@@ -1,13 +1,47 @@
 <div class="container">
-    <div class="box">
-        <div class="userProfil">
-            <span class="userProfil__title"> Mon profil </span>
-            <img class="profilPicture" src="/assets/img/pp.png">
-            <span> Nom : </span>
-            <span> Prénom : </span>
-            <span> Mail :</span>
-            <span> Anniversaire : </span>
-            <button mat-button color="accent"> Modifier mes informations </button>
+    <ng-container [ngSwitch]="form">
+        <div class="box">
+            <ng-template class="userProfil" [ngSwitchDefault]>
+                <div class="test">
+                    <span class="userProfil__title"> Mon profil </span>
+                    <img class="profilPicture" src="/assets/img/pp.png">
+                    <span> Nom : </span>
+                    <span> Prénom : </span>
+                    <span> Mail :</span>
+                    <span> Anniversaire : </span>
+                    <button mat-button color="accent" (click)="setForm('form')"> Modifier mes informations </button>
+                </div>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'form'">
+                <div class="test">
+                    <span> Modifier mes informations </span>
+                    <form class="form">
+                        <mat-form-field>
+                            <mat-label>Nom:</mat-label>
+                            <input matInput placeholder="" name="email" ngModel required>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Prénom:</mat-label>
+                            <input matInput placeholder="" name="email" ngModel required>
+                        </mat-form-field>
+
+                        <mat-form-field >
+                            <mat-label>Mail:</mat-label>
+                            <input matInput placeholder="" name="email" ngModel required>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Anniversaire:</mat-label>
+                            <input matInput placeholder="" name="email" ngModel required>
+                        </mat-form-field>
+
+                        <button mat-button color="accent" type="submit" (click)="setForm('')"> Ok mes informations </button>
+
+                    </form>
+                </div>
+            </ng-template>
         </div>
-    </div>
+    </ng-container>
 </div>

@@ -1,112 +1,126 @@
 //POST
 
 .createAPost {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 2%;
-    background-color: #ffe5d9;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  background-color: #314360;
+  border-radius: 20px;
+  height: 150px;
+  justify-content: space-evenly;
+  width: 83%;
+
+  &__writeAPost {
+    margin-top: 10px;
     border-radius: 20px;
-    height: 150px;
-    justify-content: space-evenly;
-  
-    &__writeAPost {
-      margin-top: 10px;
-      border-radius: 20px;
-      width: 80%;
-    }
-  
-    &__input {
-      border: none;
-      outline: none;
-      width: 100%;
-      border-radius: 20px;
-      font-family: "Nunito";
-      padding: 12px;
-    }
-  
-    &__rowButtons {
-      display: flex;
-      justify-content: space-between;
-      width: 25%;
-    }
-  
-    &__btn {
-      background-color: #ffd7ba;
-      font-family: "Nunito";
-      font-weight: bold;
-    }
+    width: 80%;
   }
-  
-  .postFeed {
+
+  &__input {
+    border: none;
+    outline: none;
+    width: 100%;
+    border-radius: 20px;
+    font-family: "Nunito";
+    padding: 12px;
+  }
+
+  &__rowButtons {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 640px;
-    overflow: auto;
+    justify-content: space-between;
+    width: 25%;
   }
-  
-  .post {
-    width: 75%;
+
+  &__btn {
     background-color: #ffd7ba;
-    border-radius: 30px;
-    padding: 30px;
-    margin-top: 5%;
-  
-    &__postContent {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
-    }
-  
-    &__postComment {
-      height: 50px;
-      display: flex;
-      align-items: center;
-      color: black;
-      background-color: #fae1dd;
-      border-radius: 30px;
-      padding: 0 10px;
-      margin: 10px;
-    }
-  
-    &__postTitle {
-      font-weight: bold;
-      font-size: 20px;
-    }
-  
-    &__imgComment {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 9px;
-    }
+    font-family: "Nunito";
+    font-weight: bold;
   }
-  
-  .rowInfoPost {
+}
+
+.postFeed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 640px;
+  overflow: auto;
+}
+
+.post {
+  width: 75%;
+  background-color: #314360;
+  border-radius: 30px;
+  padding: 30px;
+  margin-top: 5%;
+  color: white;
+
+  &__headerpost {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 20px;
-    &__comment {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
   }
-  
-  .iconThumb {
-    font-size: 18px;
+
+  &__postContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
   }
-  
-  .authorOfComment {
-    margin-right: 15px;
+
+  &__postComment {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: black;
+    background-color: #bd5e68;
+    border-radius: 30px;
+    padding: 0 10px;
+    margin: 10px;
+    position: relative;
+  }
+
+  &__postTitle {
     font-weight: bold;
+    font-size: 20px;
   }
-  
+
+  &__imgComment {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 9px;
+  }
+}
+
+.trashIcon {
+  position: absolute;
+  right: 35px;
+}
+
+.rowInfoPost {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+  &__comment {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.iconThumb {
+  font-size: 18px;
+}
+
+.authorOfComment {
+  margin-right: 15px;
+  font-weight: bold;
+}
+
 //COMMENTAIRES
 .writeAComment {
   display: flex;
@@ -125,7 +139,7 @@
   }
 }
 
-  //SCROLLBAR
+//SCROLLBAR
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;

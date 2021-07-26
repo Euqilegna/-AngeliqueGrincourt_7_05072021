@@ -1,70 +1,76 @@
 <div class="container-fluid">
     <div class="dashboard">
+        <header class="header">
+            <img class="header__logo" src="/assets/img/icon-left-font-monochrome-black.png">
+            <form class="header__search">
+                <input class="header__search--input" placeholder="Rechercher" type="text" name="search">
+                <fa-icon class="header__search--iconSearch" [icon]="faSearch">
+                </fa-icon>
+            </form>
+            <div class="header__welcomeMsg">
+                Bienvenue Angélique !
+                <!-- <img class="profilPicture" src="/assets/img/pp.png"> -->
+            </div>
+            <div class="header__icon">
+                <fa-icon class="icon" [icon]="faBell"></fa-icon>
+                <a [routerLink]="['/auth']">
+                    <fa-icon class="icon" [icon]="faPowerOff"></fa-icon>
+                </a>
+            </div>
+        </header>
         <div class="home__box">
             <div class="home__Side">
-                <span class="boxLogo">
-                    <img class="home__Side--logo" src="/assets/img/icon-left-font-monochrome-black.png">
-                </span>
-                <div class="account">
-                    <span class="link">
-                        <fa-icon class="icon" [icon]="faHome"> </fa-icon>
-                        <a (click)="setWitchCompo('')"> 
-                            Home
-                        </a>
-                    </span>
-                    <span class="link">
-                        <fa-icon class="icon" [icon]="faUser"> </fa-icon>
-                        <a (click)="setWitchCompo('profil')">
-                            Compte
-                        </a>
-                    </span>
-                    <span class="link">
+                <div class="flex">
+                    <div class="account">
+                        <span class="account__title">
+                            Mon Compte
+                        </span>
+                        <span class="link">
+                            <fa-icon class="icon" [icon]="faHome"> </fa-icon>
+                            <a (click)="setWitchCompo('')">
+                                Home
+                            </a>
+                        </span>
+                        <span class="link">
+                            <fa-icon class="icon" [icon]="faUser"> </fa-icon>
+                            <a (click)="setWitchCompo('profil')">
+                                Profil
+                            </a>
+                        </span>
+                        <!-- <span class="link">
                         <fa-icon class="icon" [icon]="faCogs"></fa-icon>
                         <a [routerLink]="['/']">
                             Paramètres
                         </a>
-                    </span>
-                </div>
-                <div class="myTeam">
-                    COLLABORATEURS
-                    <div class="pictureTeam">
-                        <img class="profilPicture" src="/assets/img/profil.jpg">
-                        <img class="profilPicture" src="/assets/img/profil1.jpg">
-                        <img class="profilPicture" src="/assets/img/profil2.jpg">
-                        <img class="profilPicture" src="/assets/img/pp.png">
+                    </span> -->
+                    </div>
+                    <div class="myTeam">
+                        <span class="account__title">
+                            Mes collaborateurs
+                        </span>
+                        <div class="pictureTeam">
+                            <img class="profilPicture" src="/assets/img/profil.jpg">
+                            <img class="profilPicture" src="/assets/img/profil1.jpg">
+                            <img class="profilPicture" src="/assets/img/profil2.jpg">
+                            <img class="profilPicture" src="/assets/img/pp.png">
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="home__center">
-                <div class="headerOfFeed">
-                    <form class="search">
-                        <input class="search__input" placeholder="Rechercher" type="text" name="search">
-                        <fa-icon class="search__iconSearch" [icon]="faSearch">
-                        </fa-icon>
-                    </form>
-                    <div class="welcomeMsg">
-                        Bienvenue Angélique !
-                        <!-- <img class="profilPicture" src="/assets/img/pp.png"> -->
-                    </div>
-                </div>
-                <div >
+                <div>
                     <ng-container [ngSwitch]="witchCompo">
-                        <ng-template [ngSwitchCase]="'profil'"><app-user-profil></app-user-profil>
+                        <ng-template [ngSwitchCase]="'profil'">
+                            <app-user-profil></app-user-profil>
                         </ng-template>
-                        <ng-template [ngSwitchDefault]> <app-post-feed></app-post-feed>
+                        <ng-template [ngSwitchDefault]>
+                            <app-post-feed></app-post-feed>
                         </ng-template>
                     </ng-container>
-                    
-                    
                 </div>
             </div>
             <div class="home__Side">
-                <div class="home__icon">
-                    <fa-icon class="icon" [icon]="faBell"></fa-icon>
-                    <a [routerLink]="['/auth']">
-                        <fa-icon class="icon" [icon]="faPowerOff"></fa-icon>
-                    </a>
-                </div>
+
                 <div class="forum">
                     <span class="forum__titleSection"> FORUM </span>
                     <div class="card">

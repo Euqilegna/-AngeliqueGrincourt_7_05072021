@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core'; 
 
 @Component({
   selector: 'app-user-profil',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfilComponent implements OnInit {
 
+  form : string = ''
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  setForm(form : string){
+    this.form = form
+  }
 }

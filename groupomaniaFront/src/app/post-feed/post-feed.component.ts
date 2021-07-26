@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-post-feed',
@@ -9,6 +10,8 @@ import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 export class PostFeedComponent implements OnInit {
 
   faThumbsUp = faThumbsUp
+  faTrashAlt = faTrashAlt
+  
   constructor() { }
 
   ngOnInit(): void {
