@@ -21,15 +21,24 @@ export class HomeComponent implements OnInit {
   faBell = faBell;
   faPowerOff = faPowerOff;
   faSearch = faSearch;
-  
-  href : string = ""
+
+  witchCompo : string = ''
+
   constructor(
-    private router: Router
-  ) {}
+    public router: Router
+  ) { }
+
+
 
   ngOnInit(): void {
-    this.href = this.router.url;
-    console.log(this.href)
+    
   }
+
+  setWitchCompo(compo : string){
+    this.witchCompo = compo
+  } 
+
+
+
 }
 

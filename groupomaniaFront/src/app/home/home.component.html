@@ -8,13 +8,13 @@
                 <div class="account">
                     <span class="link">
                         <fa-icon class="icon" [icon]="faHome"> </fa-icon>
-                        <a [routerLink]="['/home']">
+                        <a (click)="setWitchCompo('')"> 
                             Home
                         </a>
                     </span>
                     <span class="link">
                         <fa-icon class="icon" [icon]="faUser"> </fa-icon>
-                        <a [routerLink]="['/userProfil']">
+                        <a (click)="setWitchCompo('profil')">
                             Compte
                         </a>
                     </span>
@@ -47,8 +47,16 @@
                         <!-- <img class="profilPicture" src="/assets/img/pp.png"> -->
                     </div>
                 </div>
-                <app-post-feed></app-post-feed>
-                <!-- <app-user-profil></app-user-profil> -->
+                <div >
+                    <ng-container [ngSwitch]="witchCompo">
+                        <ng-template [ngSwitchCase]="'profil'"><app-user-profil></app-user-profil>
+                        </ng-template>
+                        <ng-template [ngSwitchDefault]> <app-post-feed></app-post-feed>
+                        </ng-template>
+                    </ng-container>
+                    
+                    
+                </div>
             </div>
             <div class="home__Side">
                 <div class="home__icon">

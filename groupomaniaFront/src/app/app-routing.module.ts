@@ -8,7 +8,7 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
 const routes: Routes = [
   { path: 'auth', component: AuthComponent},
   { path: 'subscription', component: SubscriptionComponent},
-  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
   { path: 'profil', component: UserProfilComponent}
 ];
 
