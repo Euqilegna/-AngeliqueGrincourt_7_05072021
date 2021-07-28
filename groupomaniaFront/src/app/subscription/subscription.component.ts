@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../model/user.model';
+import { SubscriptionService } from '../_service/subscription.service';
 
 @Component({
   selector: 'app-subscription',
@@ -15,6 +16,7 @@ export class SubscriptionComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private subscriptionService : SubscriptionService
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +33,7 @@ export class SubscriptionComponent implements OnInit {
     })
   }
 
-  onSubmitSub() {
+  async onSubmitSub() {
     const formValue = this.userSubscription.value;
     const newUser: User = {
       lastName: formValue['lastName'],
@@ -42,5 +44,9 @@ export class SubscriptionComponent implements OnInit {
     }
 
     console.log(formValue)
+    const result = await this.subscriptionService.addUser(formValue)
+    console.log(result)
   }
+
+
 }

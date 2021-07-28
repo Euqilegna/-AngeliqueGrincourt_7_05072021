@@ -6,7 +6,7 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
 
 const routes: Routes = [
-  { path: 'auth', component: AuthComponent},
+  { path: '', component: AuthComponent},
   { path: 'subscription', component: SubscriptionComponent},
   { path: 'home', component: HomeComponent},
   { path: 'profil', component: UserProfilComponent}

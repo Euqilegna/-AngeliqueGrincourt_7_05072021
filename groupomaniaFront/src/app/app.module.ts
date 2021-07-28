@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,11 +17,23 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { UserProfilComponent } from './user-profil/user-profil.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PostFeedComponent } from './post-feed/post-feed.component';
+import { AppConfigService } from './_service/app-config.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+const appInitializerFn = (appConfig: AppConfigService) => () =>
+  appConfig.loadAppConfig();
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, HomeComponent, SubscriptionComponent, UserProfilComponent, PostFeedComponent],
+  declarations: [
+    AppComponent,
+    AuthComponent,
+    HomeComponent,
+    SubscriptionComponent,
+    UserProfilComponent,
+    PostFeedComponent,
+  ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     MatFormFieldModule,
@@ -33,10 +45,17 @@ import { PostFeedComponent } from './post-feed/post-feed.component';
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [
     MatNativeDateModule,
+    AppConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerFn,
+      multi: true,
+      deps: [AppConfigService, HttpClient],
+    },
     {
       provide: MAT_DATE_LOCALE,
       useValue: 'fr-FR',
@@ -44,4 +63,4 @@ import { PostFeedComponent } from './post-feed/post-feed.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
