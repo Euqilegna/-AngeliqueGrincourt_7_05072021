@@ -50,8 +50,8 @@ for (const mapping of pathList) {
   router.post(`${baseUrl}`, async (req, res) => {
     console.log("post", baseUrl);
     const model = new Model();
-    console.log(req.body)
-    const data = await model.create(req.body)
+    model.set(req.body)
+    const data = await model.create()
     res.json(data);
   });
 
@@ -60,6 +60,7 @@ for (const mapping of pathList) {
   router.put(`${baseUrl}/:id`, async (req, res) => {
     console.log("put", baseUrl);
     const model = new Model();
+    model.set(req.body)
     const data = await model.modify(req.body)
     res.json(data);
   });
