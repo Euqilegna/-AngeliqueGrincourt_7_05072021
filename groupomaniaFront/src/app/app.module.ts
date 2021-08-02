@@ -13,15 +13,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { UserProfilComponent } from './user-profil/user-profil.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PostFeedComponent } from './post-feed/post-feed.component';
 import { AppConfigService } from './_service/app-config.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import { AuthGuard } from './_service/auth-guard.service';
 
 const appInitializerFn = (appConfig: AppConfigService) => () =>
   appConfig.loadAppConfig();
+
 
 @NgModule({
   declarations: [
@@ -48,6 +51,7 @@ const appInitializerFn = (appConfig: AppConfigService) => () =>
     FontAwesomeModule,
   ],
   providers: [
+    AuthGuard,
     MatNativeDateModule,
     AppConfigService,
     {
@@ -60,6 +64,7 @@ const appInitializerFn = (appConfig: AppConfigService) => () =>
       provide: MAT_DATE_LOCALE,
       useValue: 'fr-FR',
     },
+    DatePipe
   ],
   bootstrap: [AppComponent],
 })

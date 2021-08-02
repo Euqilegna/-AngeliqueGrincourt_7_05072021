@@ -5,10 +5,10 @@
                 <div class="test">
                     <span class="userProfil__title"> Mon profil </span>
                     <img class="profilPicture" src="/assets/img/pp.png">
-                    <span> Nom : </span>
-                    <span> Prénom : </span>
-                    <span> Mail :</span>
-                    <span> Anniversaire : </span>
+                    <span> Nom : {{lastName}}</span>
+                    <span> Prénom : {{firstName}}</span>
+                    <span> Mail : {{mail}}</span>
+                    <span> Anniversaire :{{birthday}} </span>
                     <button mat-button color="accent" (click)="setForm('form')"> Modifier mes informations </button>
                 </div>
             </ng-template>

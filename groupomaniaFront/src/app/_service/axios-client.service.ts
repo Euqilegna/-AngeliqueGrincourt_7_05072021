@@ -24,7 +24,7 @@ export class AxiosClientService {
 
   constructor(private appConfig: AppConfigService) {
     this.axiosClient = axios.create({
-      withCredentials: true,
+      timeout: this.appConfig.config.apiTimeOut,
     });
     this.baseUrl = this.appConfig.config.baseUrl;
 
@@ -42,10 +42,12 @@ export class AxiosClientService {
     this.axiosClient.interceptors.response.use(
       (response) => {
         this._handleResponse(response);
+        console.log("C'EST OK", response);
         return response;
       },
       (error) => {
         this._handleError(error.response);
+        console.log('ERREUR', error);
         return Promise.reject(error);
       }
     );
@@ -82,14 +84,11 @@ export class AxiosClientService {
   }
 
   private _handleResponse = (response: AxiosResponse) => {
-    return response;
+    const { data } = response;
+    return data;
   };
 
   protected _handleError = (error: any) => {
     return Promise.reject(error);
   };
 }
-function withCredentials(withCredentials: any) {
-  throw new Error('Function not implemented.');
-}
-

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm, Validators } from '@angular/forms';
+import { User } from '../model/user.model';
 import { AuthService } from '../_service/auth.service';
 
 @Component({
@@ -7,14 +8,11 @@ import { AuthService } from '../_service/auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
-
 export class AuthComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
 
-  constructor(
-    private authService : AuthService
-  ) { }
+  constructor(private authService: AuthService) {}
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
@@ -24,14 +22,11 @@ export class AuthComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   async onSubmit(form: NgForm) {
-    const login = form.value.email;
-    const password = form.value.password;
-    // await this.authService.login(login, password)
+    const mail = form.value.email;
+    const pwd = form.value.password;
+    await this.authService.login(mail, pwd);
   }
-
 }
-
-

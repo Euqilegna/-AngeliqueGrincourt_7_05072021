@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ApiUser } from '../model/user.model';
 import { AppConfigService } from './app-config.service';
 import { AxiosClientService } from './axios-client.service';
 
@@ -6,15 +7,19 @@ import { AxiosClientService } from './axios-client.service';
   providedIn: 'root',
 })
 export class SubscriptionService {
-  baseUrl: any;
+  baseUsers: any;
   constructor(
     private axios: AxiosClientService,
     private appConfig: AppConfigService
   ) {
-    this.baseUrl = `${this.appConfig.config.baseUser}`;
+    this.baseUsers = `${this.appConfig.config.baseUsers}`;
   }
-  async addUser(userData: Object) {
-    const data = await this.axios.put({ path: this.baseUrl, params: userData });
+
+  async addUser(userData: ApiUser) {
+    const data = await this.axios.post({
+      path: this.baseUsers,
+      params: userData
+    });
     return data;
   }
 }

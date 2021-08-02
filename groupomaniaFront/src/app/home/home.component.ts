@@ -7,8 +7,7 @@ import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-
-
+import { AuthService } from '../_service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -22,25 +21,17 @@ export class HomeComponent implements OnInit {
   faBell = faBell;
   faPowerOff = faPowerOff;
   faSearch = faSearch;
-  faTrashAlt = faTrashAlt
+  faTrashAlt = faTrashAlt;
 
-  witchCompo : string = ''
-
-  constructor(
-    public router: Router
-  ) { }
-
-
+  witchCompo: string = '';
+  name: string = ''
+  constructor(public router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
-    
+    this.name = this.authService.loggedInUser.user[0].users_firstName;
   }
 
-  setWitchCompo(compo : string){
-    this.witchCompo = compo
-  } 
-
-
-
+  setWitchCompo(compo: string) {
+    this.witchCompo = compo;
+  }
 }
-
