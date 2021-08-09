@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import axios, { AxiosInstance, AxiosResponse, Method } from 'axios';
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  Method,
+} from 'axios';
 import { AppConfigService } from './app-config.service';
 
 export interface Params {
@@ -21,17 +27,22 @@ export interface PostOptions {
 export class AxiosClientService {
   private axiosClient: AxiosInstance;
   private baseUrl: string;
-
   constructor(private appConfig: AppConfigService) {
     this.axiosClient = axios.create({
-      timeout: this.appConfig.config.apiTimeOut,
+      timeout: this.appConfig.config.apiTimeout,
     });
-    this.baseUrl = this.appConfig.config.baseUrl;
+    this.baseUrl = `${this.appConfig.config.baseUrl}`;
 
     // Add a request interceptor
-    this.axiosClient.interceptors.request.use(
-      (config) => {
-        return config;
+    this.axiosClient.interceptors.request.use((config) => {
+        if (!(localStorage.getItem('token') === null)) {
+            const userId = JSON.parse(localStorage.getItem('userId')  || '{}')
+            config.headers = {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'user-id': userId
+            }
+        }
+        return config
       },
       (error) => {
         return Promise.reject(error);
@@ -40,15 +51,13 @@ export class AxiosClientService {
 
     // Add a response interceptor
     this.axiosClient.interceptors.response.use(
-      (response) => {
+      (response: AxiosResponse) => {
         this._handleResponse(response);
-        console.log("C'EST OK", response);
         return response;
       },
-      (error) => {
-        this._handleError(error.response);
-        console.log('ERREUR', error);
-        return Promise.reject(error);
+      (error: AxiosError) => {
+        this._handleError(error);
+        return Promise.reject(error.response);
       }
     );
   }
@@ -58,14 +67,19 @@ export class AxiosClientService {
     options: GetOptions | PostOptions
   ): Promise<T> {
     try {
-      const axiosResponse = await this.axiosClient.request<T>({
-        method: method,
+      const requestConfig: AxiosRequestConfig = {
+        method,
         url: `${this.baseUrl}${options.path}`,
-        data: options.params,
-      });
+      };
+
+      const paramsMethod = ['get', 'delete'];
+      paramsMethod.includes(method)
+        ? (requestConfig.params = options.params)
+        : (requestConfig.data = options.params);
+
+      const axiosResponse = await this.axiosClient.request<T>(requestConfig);
       return axiosResponse.data;
     } catch (error) {
-      Promise.reject(error);
       return error;
     }
   }
@@ -82,13 +96,15 @@ export class AxiosClientService {
   public async delete<T>(options: GetOptions): Promise<T> {
     return this.axiosCall('delete', options);
   }
+  public getAxiosClient(): AxiosInstance {
+    return this.axiosClient;
+  }
 
-  private _handleResponse = (response: AxiosResponse) => {
-    const { data } = response;
-    return data;
+  private _handleResponse = (data: AxiosResponse): void => {
+    console.log('_handleResponse', data);
   };
 
-  protected _handleError = (error: any) => {
-    return Promise.reject(error);
+  private _handleError = (error: AxiosError): void => {
+    console.log('_handleError', error.response);
   };
 }

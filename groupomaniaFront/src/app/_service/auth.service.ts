@@ -7,33 +7,33 @@ import { AxiosClientService } from './axios-client.service';
   providedIn: 'root',
 })
 export class AuthService {
-  isAuth = false;
-  loggedInUser: any;
   baseUrl: any;
-
+  loggedInUser: any;
   constructor(
     private axios: AxiosClientService,
-    private router: Router,
-    private appConfig: AppConfigService
+    private router: Router
   ) {
-    this.baseUrl = `${this.appConfig.config.baseUrl}`;
   }
+
+  get isAuth() { return !(localStorage.getItem('token') === null) }
 
   async login(mail: string, pwd: string) {
-    const data = await this.axios.post({
-      path: `/login`,
-      params: { users_mail: mail, users_pwd: pwd},
-    });
-    this.loggedInUser = data
-    this.isAuth = true;
-    this.router.navigate(['/home']);
-    return data;
+    const data: any = await this.axios.post({path: `/login`, params: { users_mail: mail, users_pwd: pwd},});
+    console.log('login', data)
+    if(data.status === 200){
+      localStorage.setItem('token', data.token)
+      localStorage.setItem('user', JSON.stringify(data.user))
+      localStorage.setItem('userId', data.user.users_id)
+      this.loggedInUser = data.user
+      this.router.navigate(['/home']);
+    } else {
+      console.log("non")
+    }
   }
 
-  // async logOut() {
-  //   const data = await this.axios.get({ path: `/Logout` });
-  //   this.isAuth = false;
-  //   this.loggedInUser = null;
-  //   this.router.navigate(['']);
-  // }
+  logOut() {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    this.router.navigate(['']);
+  }
 }

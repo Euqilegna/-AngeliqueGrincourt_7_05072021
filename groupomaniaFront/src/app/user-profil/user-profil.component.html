@@ -12,21 +12,18 @@
                     <button mat-button color="accent" (click)="setForm('form')"> Modifier mes informations </button>
                 </div>
             </ng-template>
-
             <ng-template [ngSwitchCase]="'form'">
                 <div class="test">
                     <span> Modifier mes informations </span>
                     <form class="form">
                         <mat-form-field>
-                            <mat-label>Nom:</mat-label>
-                            <input matInput placeholder="" name="email" ngModel required>
+                            <mat-label> Nom:</mat-label>
+                            <input matInput placeholder=""  name="lastName" ngModel>
                         </mat-form-field>
-
                         <mat-form-field>
                             <mat-label>Prénom:</mat-label>
-                            <input matInput placeholder="" name="email" ngModel required>
+                            <input matInput placeholder=""name="firstName" ngModel required>
                         </mat-form-field>
-
                         <mat-form-field >
                             <mat-label>Mail:</mat-label>
                             <input matInput placeholder="" name="email" ngModel required>
@@ -34,11 +31,9 @@
 
                         <mat-form-field>
                             <mat-label>Anniversaire:</mat-label>
-                            <input matInput placeholder="" name="email" ngModel required>
+                            <input matInput placeholder="" name="birthday" ngModel required>
                         </mat-form-field>
-
                         <button mat-button color="accent" type="submit" (click)="setForm('')"> Ok mes informations </button>
-
                     </form>
                 </div>
             </ng-template>

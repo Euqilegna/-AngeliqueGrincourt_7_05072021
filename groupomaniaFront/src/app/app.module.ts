@@ -21,6 +21,7 @@ import { AppConfigService } from './_service/app-config.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { AuthGuard } from './_service/auth-guard.service';
+import { UserInfosComponent } from './user-infos/user-infos.component';
 
 const appInitializerFn = (appConfig: AppConfigService) => () =>
   appConfig.loadAppConfig();
@@ -34,6 +35,7 @@ const appInitializerFn = (appConfig: AppConfigService) => () =>
     SubscriptionComponent,
     UserProfilComponent,
     PostFeedComponent,
+    UserInfosComponent,
   ],
   imports: [
     HttpClientModule,

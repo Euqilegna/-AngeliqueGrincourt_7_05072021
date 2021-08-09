@@ -17,7 +17,7 @@ export class SubscriptionComponent implements OnInit {
     private fb: FormBuilder,
     private subscriptionService: SubscriptionService,
     public datepipe: DatePipe
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -40,6 +40,7 @@ export class SubscriptionComponent implements OnInit {
     const formatDate = this.datepipe.transform(date, 'yyyy-MM-dd');
 
     const newUser: User = new User(
+      0,
       formValue['lastName'],
       formValue['firstName'],
       formValue['email'],

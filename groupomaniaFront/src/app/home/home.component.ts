@@ -7,7 +7,9 @@ import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { User } from '../model/user.model';
 import { AuthService } from '../_service/auth.service';
+import { UserService } from '../_service/user.service';
 
 @Component({
   selector: 'app-home',
@@ -24,11 +26,28 @@ export class HomeComponent implements OnInit {
   faTrashAlt = faTrashAlt;
 
   witchCompo: string = '';
-  name: string = ''
-  constructor(public router: Router, private authService: AuthService) {}
+  firstName: string = '';
 
-  ngOnInit(): void {
-    this.name = this.authService.loggedInUser.user[0].users_firstName;
+  users: Array<User> = [];
+  collaborateur: any;
+  selectedCollaborateur: User;
+  userId: number = 0;
+  constructor(
+    public router: Router,
+    public authService: AuthService,
+    private userService: UserService
+  ) {}
+
+  async ngOnInit() {
+    this.firstName = this.authService.loggedInUser.users_firstName;
+
+    this.users = await this.userService.getAllUsers();
+  }
+
+  onClick(user: User) {
+    this.setWitchCompo('userInfos');
+    this.selectedCollaborateur = user;
+    console.log(user);
   }
 
   setWitchCompo(compo: string) {
