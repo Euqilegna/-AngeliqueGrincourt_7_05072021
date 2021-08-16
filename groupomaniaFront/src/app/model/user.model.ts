@@ -15,7 +15,7 @@ export class User {
     password: string
     birthday: any
 
-    constructor(id: number, lastName: string, firstName: string, email: string, password: string, birthday: any) {
+    constructor(id: number, lastName?: string, firstName?: string, email?: string, password?: string, birthday?: any) {
         this.id = id
         this.lastName = lastName
         this.firstName = firstName

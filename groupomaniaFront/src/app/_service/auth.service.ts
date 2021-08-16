@@ -9,6 +9,7 @@ import { AxiosClientService } from './axios-client.service';
 export class AuthService {
   baseUrl: any;
   loggedInUser: any;
+  static loggedInUser: any;
   constructor(
     private axios: AxiosClientService,
     private router: Router

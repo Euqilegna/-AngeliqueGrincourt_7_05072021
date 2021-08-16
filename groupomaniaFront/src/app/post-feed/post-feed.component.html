@@ -1,35 +1,43 @@
 <div class="createAPost">
-    <form class="createAPost__writeAPost">
-        <input class="createAPost__input" placeholder="Publier un post" type="text" name="post">
+    <form class="createAPost__writeAPost" [formGroup]="createAPost" (ngSubmit)="onSubmitNewPost()">
+        <input class="createAPost__input" formControlName="title" placeholder="Publier un post" type="text" name="post">
+        <div class="createAPost__rowButtons">
+            <!-- <button mat-button class="createAPost__btn">GIF </button> -->
+            <label> Images </label>
+            <input type="file" name="photo" (change)="onFileSelect($event)" accept="image/png, image/jpeg" />
+            <button mat-button class="createAPost__btn" type="submit">Publier</button>
+        </div>
     </form>
-    <div class="createAPost__rowButtons">
-        <button mat-button class="createAPost__btn">GIF</button>
-        <button mat-button class="createAPost__btn">Publier</button>
-    </div>
 </div>
 <div class="postFeed">
-    <div class="post">
+    <div class="post" *ngFor="let post of posts">
         <div class="post__headerpost">
             <div class="post__postTitle">
-                Titre du post
+                {{post.title}}
             </div>
-            <fa-icon [icon]="faTrashAlt"></fa-icon>
+            <div>{{post.author.lastName}} {{post.author.firstName}}</div>
+            <div> {{post.dateOfPublish}}</div>
+            <span>
+                <!-- Si le nom de l'auteur du post est le même que le user connecté alors : affiche la poubelle sinon non -->
+                <fa-icon [icon]="faTrashAlt"></fa-icon>
+            </span>
         </div>
         <div class="post__postContent">
-            <img class="imgPost" src="/assets/img/lol.jpg" width="350">
+            <img class="imgPost" [src]="appConfigService.config.baseUrl + post.file" width="350">
         </div>
         <div class="rowInfoPost">
             <div class="rowInfoPost__likes">
-                <fa-icon class="iconThumb" [icon]="faThumbsUp"></fa-icon> 1
+                <fa-icon class="iconThumb" [icon]="faThumbsUp"></fa-icon> {{post.likes}}
+                <fa-icon class="iconThumb" [icon]="faThumbsDown"></fa-icon> {{post.unlikes}}
             </div>
             <div class="rowInfoPost__comments">
-                Commentaires : 5
+                Commentaires : {{post.numberOfComments}}
             </div>
         </div>
         <form class="writeAComment">
             <input class="writeAComment__input" placeholder="Rédiger un commentaire" type="text" name="search">
         </form>
-        <div class="post__postComments">
+        <!-- <div class="post__postComments">
             <div class="post__postComment">
                 <img class="post__imgComment" src="/assets/img/pp.png" width="350">
                 <span class="authorOfComment"> Angélique Grincourt :</span>
@@ -47,42 +55,6 @@
             <span class="trashIcon">
                 <fa-icon [icon]="faTrashAlt"></fa-icon>
             </span>
-        </div>
-
-    </div>
-
-    <div class="post">
-        <div class="post__postTitle">
-            Titre du post
-        </div>
-        <div class="post__postContent">
-            <img class="post__imgPost" src="/assets/img/lol.jpg" width="350">
-        </div>
-        <div class="rowInfoPost">
-            <div class="likes">
-                <fa-icon class="iconThumb" [icon]="faThumbsUp"></fa-icon> 1
-            </div>
-            <div class="comments">
-                Commentaires : 5
-            </div>
-        </div>
-        <div class="post__postComments">
-            <div class="post__postComment">
-                <img class="post__imgComment" src="/assets/img/pp.png" width="350">
-                <span class="authorOfComment"> Angélique Grincourt :</span>
-                <span class="contentOfComment"> Whaou trop rigolo </span>
-                <span class="trashIcon">
-                    <fa-icon [icon]="faTrashAlt"></fa-icon>
-                </span>
-            </div>
-            <div class="post__postComment">
-                <img class="post__imgComment" src="/assets/img/profil1.jpg" width="350">
-                <span class="authorOfComment"> Martin Dupont :</span>
-                <span class="contentOfComment"> Ahahah </span>
-                <span class="trashIcon">
-                    <fa-icon [icon]="faTrashAlt"></fa-icon>
-                </span>
-            </div>
-        </div>
+        </div> -->
     </div>
 </div>

@@ -11,7 +11,7 @@ import { SubscriptionService } from '../_service/subscription.service';
 })
 export class SubscriptionComponent implements OnInit {
   hide = true;
-  userSubscription!: FormGroup;
+  userSubscription: FormGroup;
 
   constructor(
     private fb: FormBuilder,

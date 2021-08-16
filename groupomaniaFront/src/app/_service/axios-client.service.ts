@@ -35,15 +35,16 @@ export class AxiosClientService {
 
     // Add a request interceptor
     this.axiosClient.interceptors.request.use((config) => {
-        if (!(localStorage.getItem('token') === null)) {
-            const userId = JSON.parse(localStorage.getItem('userId')  || '{}')
-            config.headers = {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'user-id': userId
-            }
+      if (!(localStorage.getItem('token') === null)) {
+        const userId = JSON.parse(localStorage.getItem('userId') || '{}')
+        config.headers = {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'user-id': userId
         }
-        return config
-      },
+      }
+      console.log('config', config)
+      return config
+    },
       (error) => {
         return Promise.reject(error);
       }
@@ -88,6 +89,7 @@ export class AxiosClientService {
     return this.axiosCall('get', options);
   }
   public async post<T>(options: PostOptions): Promise<T> {
+    console.log('post', options)
     return this.axiosCall('post', options);
   }
   public async put<T>(options: PostOptions): Promise<T> {
