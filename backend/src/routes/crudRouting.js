@@ -1,6 +1,8 @@
 const { BASE_API, BASE_USERS, BASE_POSTS, BASE_COMMENTS } = process.env;
 const express = require("express");
 const router = express.Router();
+const verifyToken = require("../middleware/verifyToken");
+const multer = require('../middleware/multer-config');
 
 const pathList = [
   {
@@ -38,10 +40,6 @@ for (const mapping of pathList) {
   });
 
   //POST
-  
-
-
-
   router.post(`${baseUrl}/list`, async (req, res) => {
     console.log("post list", baseUrl);
     const model = new Model();

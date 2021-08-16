@@ -23,7 +23,6 @@ router.post(`${baseUrl}`, async (req, res) => {
     res.status(401).json("Utilisateur non trouvée");
     return;
   }
-  console.log(users)
 
   const user = users[0];
   if (users_pwd !== user.users_pwd) {
@@ -35,7 +34,7 @@ router.post(`${baseUrl}`, async (req, res) => {
   res.json({
     token: token,
     status: 200,
-    user: users,
+    user: user,
   });
 
 });

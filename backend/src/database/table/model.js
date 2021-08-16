@@ -7,6 +7,12 @@ class Model {
     this.primaryKey = primaryKey;
     this.fields = fields;
     this.data = {};
+
+    this.getAll = async () => {
+      const sql = `SELECT * FROM ${this.tableName}`;
+      const [...rows] = await mysql.execute(sql);
+      return rows;
+    };
   }
 
   // ?
@@ -17,13 +23,7 @@ class Model {
     }
   };
 
-  getAll = async () => {
-    const sql = `SELECT * FROM ${this.tableName}`;
-    const [...rows] = await mysql.execute(sql);
-    return rows;
-  };
 
-  
   getById = async (id) => {
     const sql = `SELECT * FROM ${this.tableName} WHERE ${this.primaryKey} = ?`; // "?" au lieu de passer l'id pour eviter les injections sql
     const [...rows] = await mysql.execute(sql, [id]);
@@ -75,7 +75,7 @@ class Model {
       values.push(value);
     }
 
-    const sql = `UPDATE ${this.tableName} SET ${updateStr.slice(0,-1)} WHERE ${this.primaryKey} = ?`;
+    const sql = `UPDATE ${this.tableName} SET ${updateStr.slice(0, -1)} WHERE ${this.primaryKey} = ?`;
     await mysql.execute(sql, [...values, id]);
     return await this.getById(id);
   };
@@ -108,16 +108,14 @@ class Model {
         sqlParams.push(`%${conditionValue}%`);
         break;
       case "!": // Not
-        where += `${operator} ${field} ${
-          "NULL" === value ? `IS NOT NULL` : `<> ?`
-        } `;
+        where += `${operator} ${field} ${"NULL" === value ? `IS NOT NULL` : `<> ?`
+          } `;
         sqlParams.push(conditionValue);
         break;
       default:
         // Equals
-        where += `${operator} ${field} ${
-          "NULL" === value ? `IS NULL` : ` = ?`
-        } `;
+        where += `${operator} ${field} ${"NULL" === value ? `IS NULL` : ` = ?`
+          } `;
         sqlParams.push(conditionValue);
         break;
     }
