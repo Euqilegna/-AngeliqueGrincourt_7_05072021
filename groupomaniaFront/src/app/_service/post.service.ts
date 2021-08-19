@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { ApiPost, Post } from '../model/post.model';
+import { Comment } from '../model/comment.model';
 import { User } from '../model/user.model';
 import { AppConfigService } from './app-config.service';
 import { AxiosClientService } from './axios-client.service';
@@ -30,6 +31,19 @@ export class PostService {
           e.users_pwd,
           e.users_birthday
         )
+        const comments: Array<Comment> = []
+        e.comments.forEach(c => {
+          const userComment = new User(
+            c.users_id,
+            c.users_lastName,
+            c.users_firstName,
+            c.users_mail,
+            c.users_pwd,
+            c.users_birthday
+          )
+          const newComment = new Comment(c.comments_id, userComment, c.comments_content)
+          comments.push(newComment)
+        })
         return new Post(
           e.posts_id,
           user,
@@ -38,17 +52,16 @@ export class PostService {
           this.datepipe.transform( e.posts_dateOfPublish , 'dd-MM-yyyy'),
           e.posts_likes,
           e.posts_unlikes,
-          e.posts_numberOfComments
+          comments.length,
+          comments
         )
       }
     )
-
   }
 
   async uploadPostImg(file) {
     const formData = new FormData();
     formData.append('postImg', file);
-    console.log('formData', formData)
     const data = await this.axios.post({
       path: `${this.basePosts}/upload`,
       params: formData
@@ -60,12 +73,11 @@ export class PostService {
       path: this.basePosts,
       params: postData
     })
-    console.log(data)
   }
 
-  async getPostById() { }
+  // async getPostById() { }
 
-  async updatePost() { }
+  // async updatePost() { }
 
   async deletePost() { }
 }

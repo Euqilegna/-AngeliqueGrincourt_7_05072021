@@ -56,7 +56,7 @@ for (const mapping of pathList) {
   });
 
   //PUT
-  router.put(`${baseUrl}/:id`, async (req, res) => {
+  router.put(`${baseUrl}`, async (req, res) => {
     console.log("put", baseUrl);
     const model = new Model();
     model.set(req.body);

@@ -18,5 +18,4 @@ const storage = multer.diskStorage({
   }
 });
 
-console.log('multer middleware')
 module.exports = multer({storage: storage})

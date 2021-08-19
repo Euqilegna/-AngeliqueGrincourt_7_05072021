@@ -1,4 +1,5 @@
-import { ApiUser, User } from "./user.model"
+import { ApiComment, Comment } from "./comment.model"
+import { User } from "./user.model"
 
 export interface ApiPost {
     posts_id: number,
@@ -15,6 +16,7 @@ export interface ApiPost {
     users_pwd?: string
     users_mail?: string
     users_birthday?: any
+    comments?: Array<ApiComment>
 }
 
 export class Post {
@@ -28,7 +30,7 @@ export class Post {
     numberOfComments: number
     comments: Array<Comment>
 
-    constructor(id: number, author: User, title: string, file: any, dateOfPublish: any, likes: number, unlikes: number, numberOfComments: number) {
+    constructor(id: number, author: User, title: string, file: any, dateOfPublish: any, likes: number, unlikes: number, numberOfComments: number, comments: Array<Comment>) {
         this.id = id,
             this.author = author,
             this.title = title,
@@ -37,6 +39,7 @@ export class Post {
             this.likes = likes,
             this.unlikes = unlikes,
             this.numberOfComments = numberOfComments
+            this.comments = comments
     }
 
     getApiData(): ApiPost {

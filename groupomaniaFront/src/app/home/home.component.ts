@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
   onClick(user: User) {
     this.setWitchCompo('userInfos');
     this.selectedCollaborateur = user;
-    console.log(user);
   }
 
   setWitchCompo(compo: string) {

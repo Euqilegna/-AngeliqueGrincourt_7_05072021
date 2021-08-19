@@ -12,7 +12,6 @@ export class AppConfigService {
             .toPromise()
             .then(data => {
                 this.appConfig = data
-                console.log(data)
             })
     }
 

@@ -2,7 +2,6 @@ const mysql = require('mariadb')
 
 const { DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE } = process.env
 
-console.log('DB_HOST', DB_HOST)
 
 const createPool = async () => {
     const pool = await mysql.createPool({

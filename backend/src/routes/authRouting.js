@@ -8,7 +8,6 @@ const baseUrl = `${BASE_API}${BASE_AUTH}`;
 
 router.post(`${baseUrl}`, async (req, res) => {
   const { users_mail, users_pwd } = req.body;
-  console.log(req.body)
   if (!users_mail || !users_pwd) {
     res.status(400).json("Une erreur est survenue lors de la requête");
     return;

@@ -1,8 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { SubscriptionService } from '../_service/subscription.service';
+import { SnackBarComponent } from '../_ui/snack-bar/snack-bar.component';
+
 
 @Component({
   selector: 'app-subscription',
@@ -16,7 +20,9 @@ export class SubscriptionComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private subscriptionService: SubscriptionService,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +54,12 @@ export class SubscriptionComponent implements OnInit {
       formatDate
     );
 
-    console.log(newUser);
     const result = await this.subscriptionService.addUser(newUser.getApiData());
+    if (result) {
+      this.router.navigate(['/home']);
+      this.snackBar.openFromComponent(SnackBarComponent, {
+        data: 'Votre compte a bien été crée !'
+      });
+    }
   }
 }

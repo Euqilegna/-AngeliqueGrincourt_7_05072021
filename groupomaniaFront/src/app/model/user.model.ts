@@ -30,7 +30,7 @@ export class User {
             users_lastName: this.lastName,
             users_firstName: this.firstName,
             users_pwd: this.password,
-            users_mail: this.password,
+            users_mail: this.email,
             users_birthday: this.birthday
         }
     }

@@ -7,6 +7,8 @@ import axios, {
   Method,
 } from 'axios';
 import { AppConfigService } from './app-config.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../_ui/snack-bar/snack-bar.component';
 
 export interface Params {
   [key: string]: any;
@@ -27,7 +29,7 @@ export interface PostOptions {
 export class AxiosClientService {
   private axiosClient: AxiosInstance;
   private baseUrl: string;
-  constructor(private appConfig: AppConfigService) {
+  constructor(private appConfig: AppConfigService, private snackBar: MatSnackBar) {
     this.axiosClient = axios.create({
       timeout: this.appConfig.config.apiTimeout,
     });
@@ -107,6 +109,12 @@ export class AxiosClientService {
   };
 
   private _handleError = (error: AxiosError): void => {
-    console.log('_handleError', error.response);
+    const errMsg = error.response.data
+    this.snackBar.openFromComponent(SnackBarComponent, {
+      data: errMsg,
+      duration: 2000
+    });
   };
+
+
 }

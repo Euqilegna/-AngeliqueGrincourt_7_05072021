@@ -40,7 +40,6 @@ export class UserService {
       path: this.baseUsers,
       params: userData,
     });
-    console.log(data);
     return data;
   }
 

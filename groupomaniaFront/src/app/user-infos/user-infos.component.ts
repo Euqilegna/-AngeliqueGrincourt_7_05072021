@@ -14,6 +14,5 @@ export class UserInfosComponent implements OnInit, OnChanges {
   ngOnInit(): void { }
 
   ngOnChanges(change: SimpleChanges) {
-    console.log(change)
   }
 }

@@ -19,7 +19,6 @@ router.post(`${baseUrl}`, multer.single('posts_file'), async (req, res) => {
     })
 
     const result = await postsTable.create()
-    console.log('result', result)
     res.json(result)
   } else {
     res.json(false)
@@ -28,7 +27,6 @@ router.post(`${baseUrl}`, multer.single('posts_file'), async (req, res) => {
 });
 
 router.get(`${baseUrl}/public/image/:img`,  async (req, res) => {
-  console.log('coucou')
   res.sendFile(path.join(__dirname, `../../assets/img/${req.params.img}`))
 })
 

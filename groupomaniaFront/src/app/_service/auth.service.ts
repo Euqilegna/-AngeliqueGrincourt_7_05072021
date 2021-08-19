@@ -1,5 +1,7 @@
 import { ComponentFactoryResolver, Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { SnackBarComponent } from '../_ui/snack-bar/snack-bar.component';
 import { AppConfigService } from './app-config.service';
 import { AxiosClientService } from './axios-client.service';
 
@@ -12,7 +14,8 @@ export class AuthService {
   static loggedInUser: any;
   constructor(
     private axios: AxiosClientService,
-    private router: Router
+    private router: Router,
+    private snackBar : MatSnackBar
   ) {
   }
 
@@ -20,7 +23,6 @@ export class AuthService {
 
   async login(mail: string, pwd: string) {
     const data: any = await this.axios.post({path: `/login`, params: { users_mail: mail, users_pwd: pwd},});
-    console.log('login', data)
     if(data.status === 200){
       localStorage.setItem('token', data.token)
       localStorage.setItem('user', JSON.stringify(data.user))
@@ -28,7 +30,7 @@ export class AuthService {
       this.loggedInUser = data.user
       this.router.navigate(['/home']);
     } else {
-      console.log("non")
+      this.router.navigate(['']);
     }
   }
 

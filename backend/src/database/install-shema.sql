@@ -1,39 +1,37 @@
-CREATE TABLE users 
+CREATE TABLE IF NOT EXISTS users 
 (
     users_id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     users_lastName VARCHAR(255) NOT NULL, 
     users_firstName VARCHAR(255) NOT NULL, 
     users_mail VARCHAR(255) NOT NULL UNIQUE, 
-    users_birthday DATE NOT NULL,
-    users_profilePicture BLOB NULL, 
-    users_isEnable VARCHAR(255) NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+    users_pwd VARCHAR(255) NOT NULL, 
+    users_birthday DATE NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE post 
+CREATE TABLE IF NOT EXISTS  posts 
 (
-    post_id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    post_author INT(11) NOT NULL,
-    post_title VARCHAR(255) NOT NULL, 
-    post_content TEXT(2000) NOT NULL,  
-    post_file BLOB NULL, 
-    post_date  DATE NOT NULL,
-    CONSTRAINT fk_user_post
-    FOREIGN KEY (author)
-    REFERENCES users(id)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+    posts_id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    posts_author INT(11) NOT NULL,
+    posts_title VARCHAR(255) NOT NULL, 
+    posts_file VARCHAR(255) NULL, 
+    posts_dateOfPublish DATE NOT NULL DEFAULT NOW(),
+    posts_likes INT(5) NOT NULL DEFAULT 0,
+    posts_unlikes INT(5) NOT NULL DEFAULT 0,
+    posts_numberOfComments INT(5) NOT NULL DEFAULT 0,
+   FOREIGN KEY (posts_author) REFERENCES users(users_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE comment 
+CREATE TABLE IF NOT EXISTS comments
 (
-    comment_id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    comment_author INT(11) NOT NULL,
-    comment_content TEXT(500) NOT NULL, 
-    CONSTRAINT fk_user_comment
-    FOREIGN KEY (author)
-    REFERENCES users(id)
-
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 
+    comments_id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    comments_author INT(11) NOT NULL,
+    comments_post INT(11) NOT NULL,
+    comments_content TEXT(500) NOT NULL, 
+    FOREIGN KEY (comments_author) REFERENCES users(users_id) ON DELETE CASCADE,
+    FOREIGN KEY (comments_post) REFERENCES posts(posts_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 
 
 
 -- JOINTURE 
 -- Recupèrerer les titres des articles écrit par "Grincourt"
-SELECT post_title FROM post INNER JOIN users on `post_author` = users_id WHERE users_lastName = "Grincourt"
+SELECT posts_title FROM posts INNER JOIN users on `posts_author` = users_id WHERE users_lastName = "Grincourt"

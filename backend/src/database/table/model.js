@@ -63,7 +63,6 @@ class Model {
   };
 
   modify = async (dataToUpdate) => {
-    console.log(dataToUpdate)
     const id = dataToUpdate[this.primaryKey];
     this.set(dataToUpdate);
     delete this.data[this.primaryKey];

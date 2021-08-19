@@ -4,7 +4,6 @@
             <ng-template class="userProfil" [ngSwitchDefault]>
                 <div class="test">
                     <span class="userProfil__title"> Mon profil </span>
-                    <img class="profilPicture" src="/assets/img/pp.png">
                     <span> Nom : {{lastName}}</span>
                     <span> Prénom : {{firstName}}</span>
                     <span> Mail : {{mail}}</span>
@@ -15,25 +14,27 @@
             <ng-template [ngSwitchCase]="'form'">
                 <div class="test">
                     <span> Modifier mes informations </span>
-                    <form class="form">
+                    <form class="form" [formGroup]="updateUserInfo" (ngSubmit)="updateOnSubmit()">
                         <mat-form-field>
                             <mat-label> Nom:</mat-label>
-                            <input matInput placeholder=""  name="lastName" ngModel>
+                            <input matInput placeholder="" formControlName="lastName">
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Prénom:</mat-label>
-                            <input matInput placeholder=""name="firstName" ngModel required>
+                            <input matInput placeholder="" formControlName="firstName" required>
                         </mat-form-field>
-                        <mat-form-field >
-                            <mat-label>Mail:</mat-label>
-                            <input matInput placeholder="" name="email" ngModel required>
-                        </mat-form-field>
-
                         <mat-form-field>
-                            <mat-label>Anniversaire:</mat-label>
-                            <input matInput placeholder="" name="birthday" ngModel required>
+                            <mat-label>Mail:</mat-label>
+                            <input matInput placeholder="" formControlName="email" required>
                         </mat-form-field>
-                        <button mat-button color="accent" type="submit" (click)="setForm('')"> Ok mes informations </button>
+                        <mat-form-field>
+                            <mat-label> Date d'anniversaire </mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="birthday">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <button mat-button color="accent" type="submit"> Ok mes informations
+                        </button>
                     </form>
                 </div>
             </ng-template>

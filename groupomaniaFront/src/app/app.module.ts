@@ -22,6 +22,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { AuthGuard } from './_service/auth-guard.service';
 import { UserInfosComponent } from './user-infos/user-infos.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackBarComponent } from './_ui/snack-bar/snack-bar.component';
 
 const appInitializerFn = (appConfig: AppConfigService) => () =>
   appConfig.loadAppConfig();
@@ -36,6 +38,7 @@ const appInitializerFn = (appConfig: AppConfigService) => () =>
     UserProfilComponent,
     PostFeedComponent,
     UserInfosComponent,
+    SnackBarComponent,
   ],
   imports: [
     HttpClientModule,
@@ -51,6 +54,7 @@ const appInitializerFn = (appConfig: AppConfigService) => () =>
     MatNativeDateModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    MatSnackBarModule
   ],
   providers: [
     AuthGuard,
