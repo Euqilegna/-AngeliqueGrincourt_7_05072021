@@ -1,7 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { faThumbsUp, faTrashAlt, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { faThumbsUp, faTrashAlt, faThumbsDown, faThLarge } from '@fortawesome/free-solid-svg-icons';
 import { ApiComment, Comment } from '../model/comment.model';
 import { Post } from '../model/post.model';
 import { User } from '../model/user.model';
@@ -21,6 +22,7 @@ export class PostFeedComponent implements OnInit {
   faThumbsDown = faThumbsDown
   faTrashAlt = faTrashAlt
 
+  userConnected = false
   createAPost: FormGroup
   createAComment: FormGroup
 
@@ -32,6 +34,7 @@ export class PostFeedComponent implements OnInit {
     private authService: AuthService,
     public datepipe: DatePipe,
     private postService: PostService,
+    private router: Router,
     private commentService: CommentService) { }
 
 
@@ -46,6 +49,11 @@ export class PostFeedComponent implements OnInit {
       content: [''],
     });
     this.initForm()
+
+    console.log(this.authService.loggedInUser.users_lastName)
+    console.log(this.posts)
+    //this.userConnected = this.posts ===  this.authService.loggedInUser.users_lastName 
+    console.log(this.userConnected)
   }
 
   async initForm() {
@@ -84,7 +92,8 @@ export class PostFeedComponent implements OnInit {
     for (let [key, value] of Object.entries(apiData)) {
       formData.append(key, value)
     }
-    const result = await this.postService.createAPost(formData)
+
+    const result: any = await this.postService.createAPost(formData)
   }
 
   async onSubmitNewComment(postId) {
@@ -95,8 +104,8 @@ export class PostFeedComponent implements OnInit {
       comments_content: formValue.content,
       comments_post: postId
     }
-    const result:Comment = await this.commentService.createAComment(commentValue)
-    if(result) {
+    const result: Comment = await this.commentService.createAComment(commentValue)
+    if (result) {
       result.author = new User(this.authService.loggedInUser.users_id)
       result.author.firstName = this.authService.loggedInUser.users_firstName
       result.author.lastName = this.authService.loggedInUser.users_lastName

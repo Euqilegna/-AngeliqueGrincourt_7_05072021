@@ -41,7 +41,8 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     this.firstName = this.authService.loggedInUser.users_firstName;
 
-    this.users = await this.userService.getAllUsers();
+    const usersList = await this.userService.getAllUsers();
+    this.users = usersList.filter(e => e.lastName !== this.authService.loggedInUser.users_lastName)
   }
 
   onClick(user: User) {

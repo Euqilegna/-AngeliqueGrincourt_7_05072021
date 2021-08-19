@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: #f1f1f1;
+  background-color: #fafafa;
   min-height: 100vh;
 }
 
@@ -61,7 +61,7 @@ a {
     display: flex;
     align-items: center;
     width: 95%;
-    background-color: #f1f1f1;
+    background-color: #fafafa;
     font-family: "Nunito";
     margin: auto;
   }
@@ -71,7 +71,7 @@ a {
     height: 755px;
     margin: 0 15px;
     background-color: #dce4f1;
-    border-radius: 60px;
+    border-radius: 30px;
     &--logo {
       width: 70%;
     }
@@ -80,7 +80,7 @@ a {
   &__center {
     width: 70%;
     height: 97%;
-    background-color: #f1f1f1;
+    background-color: #fafafa;
     margin-top: 1%;
   }
 

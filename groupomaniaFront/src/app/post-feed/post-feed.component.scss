@@ -34,7 +34,7 @@
   &__rowButtons {
     display: flex;
     justify-content: space-between;
-    width: 60%;
+    width: 75%;
   }
 
   &__btn {
@@ -110,7 +110,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 20px;
-  &__likes{
+  &__likes {
     width: 20%;
     display: flex;
     justify-content: space-evenly;
@@ -148,6 +148,10 @@
     margin-left: 6px;
     padding: 15px;
   }
+}
+
+.choosePic {
+  color: white;
 }
 
 //SCROLLBAR

@@ -2,9 +2,7 @@
     <form class="createAPost__writeAPost" [formGroup]="createAPost" (ngSubmit)="onSubmitNewPost()">
         <input class="createAPost__input" formControlName="title" placeholder="Publier un post" type="text" name="post">
         <div class="createAPost__rowButtons">
-            <!-- <button mat-button class="createAPost__btn">GIF </button> -->
-            <label> Images </label>
-            <input type="file" name="photo" (change)="onFileSelect($event)" accept="image/png, image/jpeg" />
+            <input class="choosePic" type="file" name="photo" (change)="onFileSelect($event)" accept="image/png, image/jpeg" />
             <button mat-button class="createAPost__btn" type="submit">Publier</button>
         </div>
     </form>
@@ -17,9 +15,9 @@
             </div>
             <div>{{post.author.lastName}} {{post.author.firstName}}</div>
             <div> {{post.dateOfPublish}}</div>
-            <span>
+            <span *ngIf="userConnected">
                 <!-- Si le nom de l'auteur du post est le même que le user connecté alors : affiche la poubelle sinon non -->
-                <fa-icon [icon]="faTrashAlt"></fa-icon>
+                <fa-icon [icon]="faTrashAlt" ></fa-icon>
             </span>
         </div>
         <div class="post__postContent">
@@ -34,8 +32,7 @@
                 Commentaires : {{post.numberOfComments}}
             </div>
         </div>
-        <form class="writeAComment" [formGroup]="createAComment"
-            (ngSubmit)="onSubmitNewComment(post.id)">
+        <form class="writeAComment" [formGroup]="createAComment" (ngSubmit)="onSubmitNewComment(post.id)">
             <input class="writeAComment__input" formControlName="content" placeholder="Rédiger un commentaire"
                 type="text" name="search">
         </form>
