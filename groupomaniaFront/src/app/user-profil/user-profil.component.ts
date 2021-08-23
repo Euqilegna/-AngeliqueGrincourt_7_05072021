@@ -27,24 +27,30 @@ export class UserProfilComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let date = this.authService.loggedInUser.users_birthday;
-    const formatDate = this.datepipe.transform(date, 'dd-MM-yyyy');
 
-    this.lastName = this.authService.loggedInUser.users_lastName;
-    this.firstName = this.authService.loggedInUser.users_firstName;
-    this.mail = this.authService.loggedInUser.users_mail;
-    this.birthday = formatDate;
 
     this.initForm()
+    this.userLogged()
+
+
   }
 
   initForm() {
     this.updateUserInfo = this.fb.group({
-      lastName: ['', Validators.required],
-      firstName: ['', Validators.required],
-      email: ['', Validators.required],
-      birthday: ['', Validators.required],
+      lastName: [this.authService.loggedInUser.users_lastName, Validators.required],
+      firstName: [this.authService.loggedInUser.users_firstName, Validators.required],
+      email: [this.authService.loggedInUser.users_mail, Validators.required],
+      birthday: [this.authService.loggedInUser.users_birthday, Validators.required],
     });
+  }
+  userLogged() {
+
+    let date = this.authService.loggedInUser.users_birthday;
+    const formatDate = this.datepipe.transform(date, 'dd-MM-yyyy');
+    this.lastName = this.authService.loggedInUser.users_lastName;
+    this.firstName = this.authService.loggedInUser.users_firstName;
+    this.mail = this.authService.loggedInUser.users_mail;
+    this.birthday = formatDate;
   }
 
   async updateOnSubmit() {
@@ -69,6 +75,7 @@ export class UserProfilComponent implements OnInit {
 
     console.log(result)
     this.setForm('')
+    this.userLogged()
   }
 
 

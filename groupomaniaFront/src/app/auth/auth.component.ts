@@ -10,17 +10,22 @@ import { AuthService } from '../_service/auth.service';
 })
 export class AuthComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
+
+  mdp = new FormControl('', [Validators.required])
+
   hide = true;
 
   constructor(private authService: AuthService) {}
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'Le champs est invalide.';
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
+
+  
 
   ngOnInit(): void {}
 
