@@ -4,28 +4,40 @@
             <ng-template class="userProfil" [ngSwitchDefault]>
                 <div class="test">
                     <span class="userProfil__title"> Mon profil </span>
-                    <span> Nom : {{lastName}}</span>
-                    <span> Prénom : {{firstName}}</span>
-                    <span> Mail : {{mail}}</span>
-                    <span> Anniversaire :{{birthday}} </span>
+                    <span class="userProfil__row">
+                        <p class="userProfil__txt"> Nom : </p>
+                        <p> {{lastName}} </p>
+                    </span>
+                    <span class="userProfil__row">
+                        <p class="userProfil__txt"> Prénom : </p>
+                        <p> {{firstName}} </p>
+                    </span>
+                    <span class="userProfil__row">
+                        <p class="userProfil__txt"> Mail : </p>
+                        <p> {{mail}} </p>
+                    </span>
+                    <span class="userProfil__row">
+                        <p class="userProfil__txt"> Anniversaire : </p>
+                        <p> {{birthday}} </p>
+                    </span>
                     <button mat-button color="accent" (click)="setForm('form')"> Modifier mes informations </button>
                 </div>
             </ng-template>
             <ng-template [ngSwitchCase]="'form'">
                 <div class="test">
-                    <span> Modifier mes informations </span>
+                    <span class="userProfil__title"> Modifier mes informations </span>
                     <form class="form" [formGroup]="updateUserInfo" (ngSubmit)="updateOnSubmit()">
                         <mat-form-field>
-                            <mat-label> Nom:</mat-label>
+                            <mat-label> Nom</mat-label>
                             <input matInput placeholder="" formControlName="lastName">
                         </mat-form-field>
                         <mat-form-field>
-                            <mat-label>Prénom:</mat-label>
-                            <input matInput placeholder="" formControlName="firstName" required>
+                            <mat-label>Prénom</mat-label>
+                            <input matInput placeholder="" formControlName="firstName">
                         </mat-form-field>
                         <mat-form-field>
-                            <mat-label>Mail:</mat-label>
-                            <input matInput placeholder="" formControlName="email" required>
+                            <mat-label>Mail</mat-label>
+                            <input matInput placeholder="" formControlName="email">
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label> Date d'anniversaire </mat-label>

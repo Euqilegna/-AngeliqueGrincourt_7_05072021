@@ -1,6 +1,25 @@
-<div class="userProfil">
-    <span> Nom : {{user.lastName}}</span>
-    <span> Prénom : {{user.firstName}}</span>
-    <span> Mail : {{user.email}}</span>
-    <span> Anniversaire :{{user.birthday}} </span>
+<div class="container">
+    <div class="box">
+        <div class="userInfos">
+            <div class="test">
+                <span class="userInfos__title"> INFORMATIONS COLLABORATEUR</span>
+                <span class="userInfos__row">
+                    <p class="userInfos__txt"> Nom : </p>
+                    <p> {{user.lastName}} </p>
+                </span>
+                <span class="userInfos__row">
+                    <p class="userInfos__txt"> Prénom : </p>
+                    <p> {{user.firstName}} </p>
+                </span>
+                <span class="userInfos__row">
+                    <p class="userInfos__txt"> Mail : </p>
+                    <p> {{user.email}} </p>
+                </span>
+                <span class="userInfos__row">
+                    <p class="userInfos__txt"> Anniversaire : </p>
+                    <p> {{user.birthday}} </p>
+                </span>
+            </div>
+        </div>
+    </div>
 </div>

@@ -23,11 +23,11 @@
   flex-direction: column;
   height: 100%;
   justify-content: space-evenly;
+  width: 45%;
 }
 
 .form {
   display: flex;
-  align-items: center;
   flex-direction: column;
   height: 80%;
   justify-content: space-evenly;
@@ -45,11 +45,24 @@
     text-transform: uppercase;
     text-align: center;
   }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__txt{
+    font-weight: 700;
+    text-transform: uppercase;
+  }
 }
 
-.profilPicture {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
+mat-label{
+  font-size: 17px;
+  color: #bd5e68;
+  margin-bottom: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
 }

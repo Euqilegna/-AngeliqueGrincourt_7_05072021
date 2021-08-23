@@ -22,7 +22,7 @@
             <div class="home__Side">
                 <div class="flex">
                     <div class="account">
-                        <span class="account__title">
+                        <span class="account__titleSection">
                             Mon Compte
                         </span>
                         <span class="link">
@@ -45,11 +45,11 @@
                     </span> -->
                     </div>
                     <div class="myTeam">
-                        <span class="account__title">
+                        <span class="account__titleSection">
                             Mes collaborateurs
                         </span>
                         <div class="userList">
-                            <div *ngFor="let user of users" (click)='onClick(user)'>
+                            <div class="collab" *ngFor="let user of users" (click)='onClick(user)'>
                                 <span> {{user.firstName}} {{user.lastName}}</span>
                             </div>
                         </div>

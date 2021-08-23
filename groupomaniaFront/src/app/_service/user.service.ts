@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { ApiUser, User } from '../model/user.model';
 import { AppConfigService } from './app-config.service';
@@ -8,9 +9,12 @@ import { AxiosClientService } from './axios-client.service';
 })
 export class UserService {
   baseUsers: any;
+  users_birthday: any;
+  birthday: any;
   constructor(
     private axios: AxiosClientService,
-    private appConfig: AppConfigService
+    private appConfig: AppConfigService,
+    public datepipe: DatePipe
   ) {
     this.baseUsers = `${this.appConfig.config.baseUsers}`;
   }
@@ -25,7 +29,7 @@ export class UserService {
           e.users_firstName,
           e.users_mail,
           e.users_pwd,
-          e.users_birthday
+          this.datepipe.transform( e.users_birthday, 'dd-MM-yyyy'),
         )
     );
   }
