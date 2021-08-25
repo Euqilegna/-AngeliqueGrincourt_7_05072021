@@ -1,4 +1,5 @@
 const Model = require("./model");
+const crypto = require('crypto')
 
 const tableName = "users";
 const primaryKey = `${tableName}_id`;
@@ -14,6 +15,11 @@ const fields = [
 class Users extends Model {
   constructor() {
     super(tableName, primaryKey, foreignKey, fields);
+    this.superCreate = this.create
+    this.create = async () => {
+      this.data[`${tableName}_pwd`] = crypto.createHash('md5').update(this.data[`${tableName}_pwd`]).digest('hex')
+      return await this.superCreate()
+    }
   }
 }
 

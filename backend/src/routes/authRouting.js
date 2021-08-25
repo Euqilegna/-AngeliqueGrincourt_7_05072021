@@ -3,6 +3,7 @@ const express = require("express");
 const Users = require("../database/table/users");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+const crypto = require('crypto')
 
 const baseUrl = `${BASE_API}${BASE_AUTH}`;
 
@@ -14,9 +15,9 @@ router.post(`${baseUrl}`, async (req, res) => {
   }
 
   const usersTable = new Users();
-  const users = await usersTable.getByField({ 
-      users_mail: users_mail 
-    });
+  const users = await usersTable.getByField({
+    users_mail: users_mail
+  });
 
   if (!users.length) {
     res.status(401).json("Utilisateur non trouvée");
@@ -24,10 +25,12 @@ router.post(`${baseUrl}`, async (req, res) => {
   }
 
   const user = users[0];
-  if (users_pwd !== user.users_pwd) {
-    res.status(403).json("Mot de passe incorrect");
-    return;
+  const md5Password = crypto.createHash('md5').update(users_pwd).digest('hex')
+  if (md5Password !== user.users_pwd) {
+    res.status(403).json('Mot de passe incorrect')
+    return
   }
+
 
   const token = jwt.sign(user, TOKEN_SECRET, { expiresIn: "24h" });
   res.json({

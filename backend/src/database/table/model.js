@@ -13,6 +13,20 @@ class Model {
       const [...rows] = await mysql.execute(sql);
       return rows;
     };
+
+    this.create = async () => {
+      delete this.data[this.primaryKey];
+
+      const keys = Object.keys(this.data);
+      const values = Object.values(this.data);
+
+      const valuesLength = "?,".repeat(keys.length).slice(0, -1); // Exemple 3 champs : ?,?,?, => slice => ?,?,?
+      const sql = `INSERT INTO ${this.tableName} (${keys.join(
+        ","
+      )}) VALUES (${valuesLength})`;
+      const { insertId } = await mysql.execute(sql, values);
+      return await this.getById(insertId);
+    };
   }
 
   // ?
@@ -48,20 +62,6 @@ class Model {
     return rows;
   };
 
-  create = async () => {
-    delete this.data[this.primaryKey];
-
-    const keys = Object.keys(this.data);
-    const values = Object.values(this.data);
-
-    const valuesLength = "?,".repeat(keys.length).slice(0, -1); // Exemple 3 champs : ?,?,?, => slice => ?,?,?
-    const sql = `INSERT INTO ${this.tableName} (${keys.join(
-      ","
-    )}) VALUES (${valuesLength})`;
-    const { insertId } = await mysql.execute(sql, values);
-    return await this.getById(insertId);
-  };
-
   modify = async (dataToUpdate) => {
     const id = dataToUpdate[this.primaryKey];
     this.set(dataToUpdate);
@@ -81,9 +81,8 @@ class Model {
 
   delete = async (id) => {
     const sql = `DELETE FROM ${this.tableName} WHERE ${this.primaryKey} = ?`;
-    console.log('sql', sql, id)
     const result = await mysql.execute(sql, [id]);
-    return result
+    return result.affectedRows
   };
 
   // TODO A REGARDER ET A ADAPTER

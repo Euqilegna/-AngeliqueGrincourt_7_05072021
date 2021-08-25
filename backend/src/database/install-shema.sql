@@ -31,7 +31,3 @@ CREATE TABLE IF NOT EXISTS comments
     FOREIGN KEY (comments_post) REFERENCES posts(posts_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 
 
-
--- JOINTURE 
--- Recupèrerer les titres des articles écrit par "Grincourt"
-SELECT posts_title FROM posts INNER JOIN users on `posts_author` = users_id WHERE users_lastName = "Grincourt"
