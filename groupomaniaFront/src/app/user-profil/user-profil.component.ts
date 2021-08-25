@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { AuthService } from '../_service/auth.service';
 import { UserService } from '../_service/user.service';
@@ -23,7 +24,8 @@ export class UserProfilComponent implements OnInit {
     private authService: AuthService,
     public datepipe: DatePipe,
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -83,10 +85,10 @@ export class UserProfilComponent implements OnInit {
     this.form = form;
   }
 
-  async deleteUser(){
-    const user = this.authService.loggedInUser.users_id
-    console.log(user)
-    const result = await this.userService.deleteUser(user)
-    console.log(result)
+  async deleteUser() {
+    const userId = this.authService.loggedInUser.users_id
+    const result = await this.userService.deleteUser(userId)
+    this.router.navigate(['/'])
+    console.log('result', result)
   }
 }

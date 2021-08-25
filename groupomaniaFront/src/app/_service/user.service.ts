@@ -29,7 +29,7 @@ export class UserService {
           e.users_firstName,
           e.users_mail,
           e.users_pwd,
-          this.datepipe.transform( e.users_birthday, 'dd-MM-yyyy'),
+          this.datepipe.transform(e.users_birthday, 'dd-MM-yyyy'),
         )
     );
   }
@@ -39,7 +39,7 @@ export class UserService {
     return data;
   }
 
-  async updateUser(userData: any) {
+  async updateUser(userData) {
     const data = await this.axios.put({
       path: this.baseUsers,
       params: userData,
@@ -47,8 +47,10 @@ export class UserService {
     return data;
   }
 
-  async deleteUser(userId: number) {
-    const data = await this.axios.delete({ path: this.baseUsers, params: { id: userId } });
+  async deleteUser(userId) {
+    const data = await this.axios.delete({
+      path: `${this.baseUsers}/${userId}`
+    });
     return data;
   }
 }
