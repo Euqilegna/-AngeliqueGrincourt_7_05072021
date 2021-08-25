@@ -52,5 +52,10 @@ export class CommentService {
 
   async updateComment() { }
 
-  async deleteComment() { }
+  async deleteComment(commentId) {
+    const data = await this.axios.delete({
+      path: `${this.baseComments}/${commentId}`
+    });
+    return data;
+  }
 }

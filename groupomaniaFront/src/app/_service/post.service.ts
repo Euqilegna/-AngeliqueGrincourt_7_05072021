@@ -49,7 +49,7 @@ export class PostService {
           user,
           e.posts_title,
           e.posts_file,
-          this.datepipe.transform( e.posts_dateOfPublish , 'dd-MM-yyyy'),
+          this.datepipe.transform(e.posts_dateOfPublish, 'dd-MM-yyyy'),
           e.posts_likes,
           e.posts_unlikes,
           comments.length,
@@ -75,9 +75,19 @@ export class PostService {
     })
   }
 
-  // async getPostById() { }
+  async getPostById(postId) {
+    const data = await this.axios.get({
+      path: `${this.basePosts}/${postId}`
+    });
+    return data;
+  }
 
   // async updatePost() { }
 
-  async deletePost() { }
+  async deletePost(postId) {
+    const data = await this.axios.delete({
+      path: `${this.basePosts}/${postId}`
+    });
+    return data;
+  }
 }

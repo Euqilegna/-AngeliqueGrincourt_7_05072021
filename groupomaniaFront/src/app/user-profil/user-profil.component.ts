@@ -1,10 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { AuthService } from '../_service/auth.service';
 import { UserService } from '../_service/user.service';
+import { SnackBarComponent } from '../_ui/snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-user-profil',
@@ -25,7 +27,8 @@ export class UserProfilComponent implements OnInit {
     public datepipe: DatePipe,
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -89,6 +92,10 @@ export class UserProfilComponent implements OnInit {
     const userId = this.authService.loggedInUser.users_id
     const result = await this.userService.deleteUser(userId)
     this.router.navigate(['/'])
+    this.snackBar.openFromComponent(SnackBarComponent, {
+      data: 'Le compte à bien été supprimé !',
+      duration: 2000
+    });
     console.log('result', result)
   }
 }

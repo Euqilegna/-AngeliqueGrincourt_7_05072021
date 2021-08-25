@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faThumbsUp, faTrashAlt, faThumbsDown, faThLarge } from '@fortawesome/free-solid-svg-icons';
@@ -27,6 +28,7 @@ export class PostFeedComponent implements OnInit {
   createAComment: FormGroup
 
   posts: Array<Post> = []
+  comments: Array<Comment> = []
 
   constructor(
     public appConfigService: AppConfigService,
@@ -110,6 +112,22 @@ export class PostFeedComponent implements OnInit {
     }
   }
 
+
+  async deletePost(postId) {
+    const result = await this.postService.deletePost(postId)
+    console.log("post", result)
+    if(result) {
+      const indexOf = this.posts.findIndex(e => postId === e.id)
+      this.posts.splice(indexOf,1)
+    } else {
+      // erreur ici
+    }
+  }
+
+  async deleteComment(commentId) {
+    const result = await this.commentService.deleteComment(commentId)
+    console.log("comment", result)
+  }
 
 
 

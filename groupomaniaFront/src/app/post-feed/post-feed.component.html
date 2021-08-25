@@ -2,7 +2,8 @@
     <form class="createAPost__writeAPost" [formGroup]="createAPost" (ngSubmit)="onSubmitNewPost()">
         <input class="createAPost__input" formControlName="title" placeholder="Publier un post" type="text" name="post">
         <div class="createAPost__rowButtons">
-            <input class="choosePic" type="file" name="photo" (change)="onFileSelect($event)" accept="image/png, image/jpeg" />
+            <input class="choosePic" type="file" name="photo" (change)="onFileSelect($event)"
+                accept="image/png, image/jpeg" />
             <button mat-button class="createAPost__btn" type="submit">Publier</button>
         </div>
     </form>
@@ -15,19 +16,15 @@
             </div>
             <div>{{post.author.lastName}} {{post.author.firstName}}</div>
             <div> {{post.dateOfPublish}}</div>
-            <span *ngIf="userConnected">
-                <!-- Si le nom de l'auteur du post est le même que le user connecté alors : affiche la poubelle sinon non -->
-                <fa-icon [icon]="faTrashAlt" ></fa-icon>
-            </span>
+            <fa-icon [icon]="faTrashAlt" (click)="deletePost(post.id)"></fa-icon>
+            <!-- <span *ngIf="userConnected">
+                Si le nom de l'auteur du post est le même que le user connecté alors : affiche la poubelle sinon non
+            </span> -->
         </div>
         <div class="post__postContent">
             <img class="imgPost" [src]="appConfigService.config.baseUrl + post.file" width="350">
         </div>
         <div class="rowInfoPost">
-            <!-- <div class="rowInfoPost__likes">
-                <fa-icon class="iconThumb" [icon]="faThumbsUp"></fa-icon> {{post.likes}}
-                <fa-icon class="iconThumb" [icon]="faThumbsDown"></fa-icon> {{post.unlikes}}
-            </div> -->
             <div class="rowInfoPost__comments">
                 Commentaires : {{post.numberOfComments}}
             </div>
@@ -41,7 +38,7 @@
                 <span class="authorOfComment"> {{comment.author.firstName}} {{comment.author.lastName}}</span>
                 <span class="contentOfComment"> {{comment.content}} </span>
                 <span class="trashIcon">
-                    <fa-icon [icon]="faTrashAlt"></fa-icon>
+                    <fa-icon [icon]="faTrashAlt" (click)="deleteComment(comment.id)"> </fa-icon>
                 </span>
             </div>
         </div>

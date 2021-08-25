@@ -58,7 +58,8 @@ export class SubscriptionComponent implements OnInit {
     if (result) {
       this.router.navigate(['/home']);
       this.snackBar.openFromComponent(SnackBarComponent, {
-        data: 'Votre compte a bien été crée !'
+        data: 'Votre compte a bien été crée !',
+        duration: 2000
       });
     }
   }
