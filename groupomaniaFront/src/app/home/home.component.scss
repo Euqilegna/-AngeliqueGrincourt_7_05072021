@@ -70,7 +70,7 @@ a {
     width: 25%;
     height: 755px;
     margin: 0 15px;
-    background-color: #bd5e68;
+    background-color: #c65960;
     border-radius: 30px;
     &--logo {
       width: 70%;
@@ -218,4 +218,16 @@ a {
     font-weight: 900;
     font-size: 20px;
   }
+
+  @media (max-width: 400px) {
+    .header {
+      &__logo {
+        width: 100%;
+      }
+      &__search {
+        display: none;
+      }
+    }
+  }
+  
 }

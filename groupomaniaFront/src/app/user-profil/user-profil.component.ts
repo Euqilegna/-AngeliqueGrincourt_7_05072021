@@ -82,4 +82,11 @@ export class UserProfilComponent implements OnInit {
   setForm(form: string) {
     this.form = form;
   }
+
+  async deleteUser(){
+    const user = this.authService.loggedInUser.users_id
+    console.log(user)
+    const result = await this.userService.deleteUser(user)
+    console.log(result)
+  }
 }

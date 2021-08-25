@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background-color: #bd5e68;
+    background-color: #c65960;
     height: 600px;
     border-radius: 20px;
     width: 60%;
@@ -32,9 +32,6 @@
     flex-direction: column;
   }
 
-  &__icon {
-  }
-
   &__form {
     font-size: 15px;
     text-align: center;
@@ -42,7 +39,7 @@
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #b65a64 inset;
+  -webkit-box-shadow: 0 0 0px 1000px #be565c inset;
 }
 
 .flex {
@@ -55,12 +52,29 @@ input:-webkit-autofill {
   width: 350px;
 }
 
-.text{
+.text {
   margin-top: 10px;
 }
 
-a{
+a {
   color: black;
   text-decoration: none;
   font-weight: bold;
+}
+
+@media (max-width: 400px) {
+  .auth {
+    &__box {
+      width: 100%;
+      box-shadow: none;
+      border-radius: 0;
+      height: 700px;
+    }
+    &__leftSide {
+      display: none;
+    }
+  }
+  .flex {
+    margin-top: 0
+  }
 }

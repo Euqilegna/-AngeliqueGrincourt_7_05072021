@@ -73,3 +73,22 @@ a{
     text-decoration: none;
     font-weight: bold;
   }
+
+  @media (max-width: 400px) {
+    .auth {
+      &__box {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        height: 700px;
+        display: flex;
+        justify-content: center;
+      }
+      &__leftSide {
+        display: none;
+      }
+    }
+    .flex {
+      margin-top: 0
+    }
+  }

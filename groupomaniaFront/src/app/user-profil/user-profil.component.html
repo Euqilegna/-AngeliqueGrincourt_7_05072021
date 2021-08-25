@@ -21,6 +21,7 @@
                         <p> {{birthday}} </p>
                     </span>
                     <button mat-button color="accent" (click)="setForm('form')"> Modifier mes informations </button>
+                    <button mat-button color="accent" (click)="deleteUser()"> Supprimer mon compte </button>
                 </div>
             </ng-template>
             <ng-template [ngSwitchCase]="'form'">

@@ -50,10 +50,7 @@ export class PostFeedComponent implements OnInit {
     });
     this.initForm()
 
-    console.log(this.authService.loggedInUser.users_lastName)
-    console.log(this.posts)
     //this.userConnected = this.posts ===  this.authService.loggedInUser.users_lastName 
-    console.log(this.userConnected)
   }
 
   async initForm() {
