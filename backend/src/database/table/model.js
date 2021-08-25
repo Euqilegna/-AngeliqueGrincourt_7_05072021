@@ -81,8 +81,9 @@ class Model {
 
   delete = async (id) => {
     const sql = `DELETE FROM ${this.tableName} WHERE ${this.primaryKey} = ?`;
-    const [...rows] = await mysql.execute(sql, [id]);
-    return rows;
+    console.log('sql', sql, id)
+    const result = await mysql.execute(sql, [id]);
+    return result
   };
 
   // TODO A REGARDER ET A ADAPTER

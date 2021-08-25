@@ -9,8 +9,6 @@ const fields = [
   `${tableName}_mail`,
   `${tableName}_pwd`,
   `${tableName}_birthday`,
-  `${tableName}_profilePicture`,
-  `${tableName}_isEnable`,
 ];
 
 class Users extends Model {

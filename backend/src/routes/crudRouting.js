@@ -65,10 +65,9 @@ for (const mapping of pathList) {
   });
 
   //DELETE
-  router.delete(`${baseUrl}`, async (req, res) => {
-    console.log("delete", baseUrl);
+  router.delete(`${baseUrl}/:id`, async (req, res) => {
     const model = new Model();
-    const data = await model.delete(req.body);
+    const data = await model.delete(req.params.id);
     res.json(data);
   });
 }
