@@ -1,4 +1,4 @@
-const { BASE_API, BASE_POSTS, BASE_UPLOAD } = process.env;
+const { BASE_API, BASE_POSTS } = process.env;
 const express = require("express");
 const router = express.Router();
 const fs = require('fs')
@@ -11,6 +11,7 @@ const baseUrl = `${BASE_API}${BASE_POSTS}`;
 router.post(`${baseUrl}`, multer.single('posts_file'), async (req, res) => {
   const filePath = path.join(__dirname, `../../assets/img/${req.file.filename}`)
 
+  console.log(req.file.filename)
   if (fs.existsSync(filePath)) {
     const postsTable = new Posts()
     postsTable.set({
@@ -19,6 +20,7 @@ router.post(`${baseUrl}`, multer.single('posts_file'), async (req, res) => {
     })
 
     const result = await postsTable.create()
+    result[0].posts_file = `${BASE_POSTS}/public/image/${req.file.filename}`
     res.json(result)
   } else {
     res.json(false)
@@ -26,7 +28,7 @@ router.post(`${baseUrl}`, multer.single('posts_file'), async (req, res) => {
 
 });
 
-router.get(`${baseUrl}/public/image/:img`,  async (req, res) => {
+router.get(`${baseUrl}/public/image/:img`, async (req, res) => {
   res.sendFile(path.join(__dirname, `../../assets/img/${req.params.img}`))
 })
 

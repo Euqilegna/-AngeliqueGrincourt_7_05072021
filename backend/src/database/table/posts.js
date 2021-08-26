@@ -10,10 +10,7 @@ const fields = [
   `${tableName}_author`,
   `${tableName}_title`,
   `${tableName}_file`,
-  `${tableName}_dateOfPublish`,
-  `${tableName}_likes`,
-  `${tableName}_unlikes`,
-  `${tableName}_numberOfComments`,
+  `${tableName}_dateOfPublish`
 ];
 
 class Posts extends Model {
@@ -21,8 +18,6 @@ class Posts extends Model {
     super(tableName, primaryKey, foreignKey, fields);
 
     this.getAll = async () => {
-
-
       const comments = new Comments()
       const commentsList = await comments.getAll()
 

@@ -10,9 +10,12 @@ const MIME_TYPES = {
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
+    console.log('destination')
     callback(null, './assets/img');
   },
   filename: (req, file, callback) => {
+    console.log('filename')
+
     const extension = MIME_TYPES[file.mimetype];
     callback(null, `${uuidv4()}.${extension}`);
   }
