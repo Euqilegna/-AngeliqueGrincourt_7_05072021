@@ -7,9 +7,6 @@ export interface ApiPost {
     posts_title: string,
     posts_file: any,
     posts_dateOfPublish: any,
-    posts_likes: number,
-    posts_unlikes: number,
-    posts_numberOfComments: number
     users_id?: number
     users_lastName?: string
     users_firstName?: string
@@ -25,20 +22,14 @@ export class Post {
     title: string
     file: any
     dateOfPublish: any
-    likes: number
-    unlikes: number
-    numberOfComments: number
     comments: Array<Comment>
 
-    constructor(id: number, author: User, title: string, file: any, dateOfPublish: any, likes: number, unlikes: number, numberOfComments: number, comments: Array<Comment>) {
+    constructor(id: number, author: User, title: string, file: any, dateOfPublish: any, comments: Array<Comment>) {
         this.id = id,
             this.author = author,
             this.title = title,
             this.dateOfPublish = dateOfPublish,
             this.file = file,
-            this.likes = likes,
-            this.unlikes = unlikes,
-            this.numberOfComments = numberOfComments
             this.comments = comments
     }
 
@@ -48,10 +39,7 @@ export class Post {
             posts_author: this.author.id,
             posts_title: this.title,
             posts_file: this.file,
-            posts_dateOfPublish: this.dateOfPublish,
-            posts_likes: this.likes,
-            posts_unlikes: this.unlikes,
-            posts_numberOfComments: this.numberOfComments
+            posts_dateOfPublish: this.dateOfPublish
         }
     }
 }

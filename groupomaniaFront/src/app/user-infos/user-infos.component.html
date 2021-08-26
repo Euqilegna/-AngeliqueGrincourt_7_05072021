@@ -3,6 +3,9 @@
         <div class="userInfos">
             <div class="test">
                 <span class="userInfos__title"> INFORMATIONS COLLABORATEUR</span>
+                <div class="suppUser" *ngIf="this.isAdmin === this.userLog" (click)="deleteUser()">
+                    <fa-icon [icon]="faUserTimes"></fa-icon>
+                </div>
                 <span class="userInfos__row">
                     <p class="userInfos__txt"> Nom : </p>
                     <p> {{user.lastName}} </p>

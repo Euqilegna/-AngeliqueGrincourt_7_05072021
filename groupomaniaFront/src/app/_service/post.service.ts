@@ -50,9 +50,6 @@ export class PostService {
           e.posts_title,
           e.posts_file,
           this.datepipe.transform(e.posts_dateOfPublish, 'dd-MM-yyyy'),
-          e.posts_likes,
-          e.posts_unlikes,
-          comments.length,
           comments
         )
       }
@@ -69,10 +66,20 @@ export class PostService {
   }
 
   async createAPost(postData: any) {
-    const data = await this.axios.post({
+    const result: Array<ApiPost> = await this.axios.post({
       path: this.basePosts,
       params: postData
     })
+    const data = result[0]
+    return new Post(
+      data.posts_id,
+      null,
+      data.posts_title,
+      data.posts_file,
+      this.datepipe.transform(data.posts_dateOfPublish, 'dd-MM-yyyy'),
+      []
+    )
+
   }
 
   async getPostById(postId) {

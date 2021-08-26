@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './model/user.model';
 import { AuthService } from './_service/auth.service';
 
 @Component({
@@ -13,6 +14,15 @@ export class AppComponent {
       authService.loggedInUser = JSON.parse(
         localStorage.getItem('user') as string
       );
+      authService.currentUser = new User(
+        authService.loggedInUser.users_id,
+        authService.loggedInUser.users_lastName,
+        authService.loggedInUser.users_firstName,
+        authService.loggedInUser.users_mail,
+        authService.loggedInUser.users_pwd,
+        authService.loggedInUser.users_birthday
+      )
+      console.log("authService.currentUser ", authService.currentUser )
     }
   }
 }

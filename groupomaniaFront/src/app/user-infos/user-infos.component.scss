@@ -15,6 +15,7 @@
   border-radius: 30px;
   height: 700px;
   flex-direction: column;
+  position: relative;
 }
 
 .test {
@@ -45,8 +46,16 @@
     justify-content: space-between;
   }
 
-  &__txt{
+  &__txt {
     font-weight: 700;
     text-transform: uppercase;
   }
+}
+
+.suppUser {
+  font-size: 25px;
+  color: red;
+  position: absolute;
+  top: 85px;
+  right: 50px;
 }

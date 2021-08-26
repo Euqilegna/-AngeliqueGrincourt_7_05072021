@@ -23,12 +23,12 @@ export class PostFeedComponent implements OnInit {
   faThumbsDown = faThumbsDown
   faTrashAlt = faTrashAlt
 
+  //isAdmin = false
   userConnected = false
   createAPost: FormGroup
   createAComment: FormGroup
 
   posts: Array<Post> = []
-  comments: Array<Comment> = []
 
   constructor(
     public appConfigService: AppConfigService,
@@ -52,11 +52,13 @@ export class PostFeedComponent implements OnInit {
     });
     this.initForm()
 
-    //this.userConnected = this.posts ===  this.authService.loggedInUser.users_lastName 
+    this.userConnected = this.authService.loggedInUser.users_lastName
+    //this.isAdmin = this.authService.loggedInUser.users_lastName
   }
 
   async initForm() {
     this.posts = await this.postService.getAllPost()
+    console.log(this.posts)
     this.posts.reverse()
   }
 
@@ -80,9 +82,6 @@ export class PostFeedComponent implements OnInit {
       formValue['title'],
       formValue['photo'],
       dateOfPostPublish,
-      0,
-      0,
-      0,
       []
     )
 
@@ -92,7 +91,9 @@ export class PostFeedComponent implements OnInit {
       formData.append(key, value)
     }
 
-    const result: any = await this.postService.createAPost(formData)
+    const result: Post = await this.postService.createAPost(formData)
+    result.author = this.authService.currentUser
+    this.posts.unshift(result)
   }
 
   async onSubmitNewComment(postId) {
@@ -116,19 +117,22 @@ export class PostFeedComponent implements OnInit {
   async deletePost(postId) {
     const result = await this.postService.deletePost(postId)
     console.log("post", result)
-    if(result) {
+    if (result) {
       const indexOf = this.posts.findIndex(e => postId === e.id)
-      this.posts.splice(indexOf,1)
+      this.posts.splice(indexOf, 1)
     } else {
       // erreur ici
     }
   }
 
-  async deleteComment(commentId) {
+  async deleteComment(commentId, postId) {
     const result = await this.commentService.deleteComment(commentId)
-    console.log("comment", result)
+    if (result) {
+      const targetPost = this.posts.find(e => postId === e.id)
+      const indexOf =  targetPost.comments.findIndex(e => commentId === e.id)
+      targetPost.comments.splice(indexOf, 1)
+    }
+    //err
   }
-
-
 
 }

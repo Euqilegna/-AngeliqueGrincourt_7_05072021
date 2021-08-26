@@ -16,10 +16,9 @@
             </div>
             <div>{{post.author.lastName}} {{post.author.firstName}}</div>
             <div> {{post.dateOfPublish}}</div>
-            <fa-icon [icon]="faTrashAlt" (click)="deletePost(post.id)"></fa-icon>
-            <!-- <span *ngIf="userConnected">
-                Si le nom de l'auteur du post est le même que le user connecté alors : affiche la poubelle sinon non
-            </span> -->
+            <div *ngIf="post.author.lastName === userConnected">
+                <fa-icon [icon]="faTrashAlt" (click)="deletePost(post.id)"></fa-icon>
+            </div>
         </div>
         <div class="post__postContent">
             <img class="imgPost" [src]="appConfigService.config.baseUrl + post.file" width="350">
@@ -38,7 +37,9 @@
                 <span class="authorOfComment"> {{comment.author.firstName}} {{comment.author.lastName}}</span>
                 <span class="contentOfComment"> {{comment.content}} </span>
                 <span class="trashIcon">
-                    <fa-icon [icon]="faTrashAlt" (click)="deleteComment(comment.id)"> </fa-icon>
+                    <div *ngIf="comment.author.lastName === userConnected">
+                        <fa-icon [icon]="faTrashAlt" (click)="deleteComment(comment.id, post.id)"></fa-icon>
+                    </div>
                 </span>
             </div>
         </div>

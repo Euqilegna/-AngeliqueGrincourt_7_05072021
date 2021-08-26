@@ -1,3 +1,5 @@
+
+
 export interface ApiUser {
     users_id: number
     users_lastName: string
@@ -5,6 +7,12 @@ export interface ApiUser {
     users_pwd: string
     users_mail: string
     users_birthday: any
+}
+
+export interface AuthResult {
+    token: string
+    status: number
+    user: ApiUser
 }
 
 export class User {
