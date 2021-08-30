@@ -31,7 +31,6 @@ router.post(`${baseUrl}`, async (req, res) => {
     return
   }
 
-
   const token = jwt.sign(user, TOKEN_SECRET, { expiresIn: "24h" });
   res.json({
     token: token,

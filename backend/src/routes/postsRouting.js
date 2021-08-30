@@ -11,7 +11,6 @@ const baseUrl = `${BASE_API}${BASE_POSTS}`;
 router.post(`${baseUrl}`, multer.single('posts_file'), async (req, res) => {
   const filePath = path.join(__dirname, `../../assets/img/${req.file.filename}`)
 
-  console.log(req.file.filename)
   if (fs.existsSync(filePath)) {
     const postsTable = new Posts()
     postsTable.set({

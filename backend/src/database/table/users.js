@@ -10,6 +10,7 @@ const fields = [
   `${tableName}_mail`,
   `${tableName}_pwd`,
   `${tableName}_birthday`,
+  `${tableName}_isAdmin`
 ];
 
 class Users extends Model {
