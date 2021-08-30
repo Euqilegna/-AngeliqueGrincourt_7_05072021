@@ -13,6 +13,7 @@ export interface ApiPost {
     users_pwd?: string
     users_mail?: string
     users_birthday?: any
+    users_isAdmin?: number
     comments?: Array<ApiComment>
 }
 

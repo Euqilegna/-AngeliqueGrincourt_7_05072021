@@ -28,7 +28,8 @@ export class CommentService {
           e.users_firstName,
           e.users_mail,
           e.users_pwd,
-          e.users_birthday
+          e.users_birthday,
+          e.users_isAdmin
         )
         return new Comment(
           e.comments_id,
@@ -39,8 +40,6 @@ export class CommentService {
     )
   }
 
-  // async getCommentById() {}
-
   async createAComment(postData: any): Promise<Comment> {
     const data = await this.axios.post({
       path: this.baseComments,
@@ -49,8 +48,6 @@ export class CommentService {
     const newComment = new Comment(data[0].comments_id, null, data[0].comments_content)
     return newComment
   }
-
-  async updateComment() { }
 
   async deleteComment(commentId) {
     const data = await this.axios.delete({

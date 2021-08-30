@@ -30,6 +30,7 @@ export class UserService {
           e.users_mail,
           e.users_pwd,
           this.datepipe.transform(e.users_birthday, 'dd-MM-yyyy'),
+          e.users_isAdmin
         )
     );
   }

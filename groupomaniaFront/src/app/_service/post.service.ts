@@ -29,7 +29,8 @@ export class PostService {
           e.users_firstName,
           e.users_mail,
           e.users_pwd,
-          e.users_birthday
+          e.users_birthday,
+          e.users_isAdmin
         )
         const comments: Array<Comment> = []
         e.comments.forEach(c => {
@@ -79,8 +80,6 @@ export class PostService {
     });
     return data;
   }
-
-  // async updatePost() { }
 
   async deletePost(postId) {
     const data = await this.axios.delete({

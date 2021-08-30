@@ -20,6 +20,7 @@ export interface ApiComment {
     users_pwd?: string
     users_mail?: string
     users_birthday?: any
+    users_isAdmin?: number
 }
 
 export class Comment {

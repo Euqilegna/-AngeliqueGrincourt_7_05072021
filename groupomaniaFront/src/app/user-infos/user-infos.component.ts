@@ -29,10 +29,10 @@ export class UserInfosComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
-    this.userLog = this.authService.loggedInUser.users_lastName
+    this.userLog = this.authService.loggedInUser.users_isAdmin
     this.isAdmin === this.userLog
 
-    console.log(this.user.id)
+    console.log(this.userLog)
   }
 
 

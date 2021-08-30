@@ -30,7 +30,6 @@ export class AuthService {
       localStorage.setItem('user', JSON.stringify(data.user))
       localStorage.setItem('userId', data.user.users_id.toString())
       this.loggedInUser = data.user
-      // constructor(id: number, lastName?: string, firstName?: string, email?: string, password?: string, birthday?: any) {
       this.currentUser = new User(
         data.user.users_id,
         data.user.users_lastName,
