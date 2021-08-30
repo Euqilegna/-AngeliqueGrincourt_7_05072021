@@ -10,6 +10,9 @@
   height: 150px;
   justify-content: space-evenly;
   width: 83%;
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 
   &__writeAPost {
     margin-top: 10px;
@@ -35,6 +38,11 @@
     display: flex;
     justify-content: space-between;
     width: 75%;
+    @media (max-width: 400px) {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;}
+    
   }
 
   &__btn {
@@ -60,6 +68,9 @@
   padding: 30px;
   margin-top: 5%;
   color: white;
+  @media (max-width: 400px) {
+    width: 82%;
+  }
 
   &__headerpost {
     display: flex;
@@ -184,4 +195,10 @@
 }
 ::-webkit-scrollbar-track:active {
   background: #ffffff;
+}
+
+@media (max-width: 400px) {
+  ::-webkit-scrollbar {
+    display: none
+  }
 }

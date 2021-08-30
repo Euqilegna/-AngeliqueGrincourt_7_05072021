@@ -56,15 +56,6 @@ export class PostService {
     )
   }
 
-  async uploadPostImg(file) {
-    const formData = new FormData();
-    formData.append('postImg', file);
-    const data = await this.axios.post({
-      path: `${this.basePosts}/upload`,
-      params: formData
-    })
-  }
-
   async createAPost(postData: any) {
     const result: Array<ApiPost> = await this.axios.post({
       path: this.basePosts,
