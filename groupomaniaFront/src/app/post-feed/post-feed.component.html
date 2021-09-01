@@ -37,7 +37,7 @@
                 <span class="authorOfComment"> {{comment.author.firstName}} {{comment.author.lastName}}</span>
                 <span class="contentOfComment"> {{comment.content}} </span>
                 <span class="trashIcon">
-                    <div *ngIf="post.author.lastName === userConnected || this.authService.isAdmin()">
+                    <div *ngIf="comment.author.lastName === userConnected || this.authService.isAdmin()">
                         <fa-icon [icon]="faTrashAlt" (click)="deleteComment(comment.id, post.id)"></fa-icon>
                     </div>
                 </span>

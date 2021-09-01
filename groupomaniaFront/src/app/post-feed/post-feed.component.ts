@@ -53,7 +53,6 @@ export class PostFeedComponent implements OnInit {
     this.initForm()
 
     this.userConnected = this.authService.loggedInUser.users_lastName
-    //this.isAdmin = this.authService.loggedInUser.users_lastName
   }
 
   async initForm() {
