@@ -33,7 +33,7 @@ export class PostFeedComponent implements OnInit {
   constructor(
     public appConfigService: AppConfigService,
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    public authService: AuthService,
     public datepipe: DatePipe,
     private postService: PostService,
     private router: Router,

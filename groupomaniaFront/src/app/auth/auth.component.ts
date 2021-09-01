@@ -25,7 +25,7 @@ export class AuthComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
-  
+
 
   ngOnInit(): void {}
 

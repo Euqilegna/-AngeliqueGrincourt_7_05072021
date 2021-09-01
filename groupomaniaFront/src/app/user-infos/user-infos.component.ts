@@ -17,24 +17,18 @@ export class UserInfosComponent implements OnInit, OnChanges {
   @Input() user: User;
 
   faUserTimes = faUserTimes
-
-  isAdmin = 'admin'
-  userLog = ''
+  userAdmin: number
   constructor(
     public datepipe: DatePipe,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
-    private userService : UserService
+    private userService: UserService
   ) { }
 
   ngOnInit() {
-    this.userLog = this.authService.loggedInUser.users_isAdmin
-    this.isAdmin === this.userLog
 
-    console.log(this.userLog)
   }
-
 
   ngOnChanges(change: SimpleChanges) {
   }
@@ -46,6 +40,6 @@ export class UserInfosComponent implements OnInit, OnChanges {
       data: 'Le compte à bien été supprimé !',
       duration: 2000
     });
-    console.log('result', result)
+    location.reload();
   }
 }

@@ -3,7 +3,7 @@
         <div class="userInfos">
             <div class="test">
                 <span class="userInfos__title"> INFORMATIONS COLLABORATEUR</span>
-                <div class="suppUser" *ngIf="this.isAdmin === this.userLog" (click)="deleteUser()">
+                <div class="suppUser" *ngIf="this.authService.isAdmin()" (click)="deleteUser()">
                     <fa-icon [icon]="faUserTimes"></fa-icon>
                 </div>
                 <span class="userInfos__row">

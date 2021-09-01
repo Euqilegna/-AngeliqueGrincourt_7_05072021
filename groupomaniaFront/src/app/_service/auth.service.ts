@@ -44,6 +44,11 @@ export class AuthService {
     }
   }
 
+  isAdmin = () => {
+    const userLog = this.loggedInUser.users_isAdmin
+    return userLog
+  } 
+
   logOut() {
     this.currentUser = null
     localStorage.removeItem('token')
