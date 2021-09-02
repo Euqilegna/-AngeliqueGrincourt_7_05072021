@@ -3,7 +3,6 @@ const express = require("express");
 const router = express.Router();
 const fs = require('fs')
 const path = require('path')
-const jwt = require("jsonwebtoken");
 const Posts = require("../database/table/posts");
 const multer = require("../middleware/multer-config");
 

@@ -3,8 +3,7 @@ const mysql = require("../mysql");
 
 const tableName = "comments";
 const primaryKey = `${tableName}_id`;
-const foreignKey = [,
-];
+const foreignKey = [];
 const fields = [
   `${tableName}_author`,
   `${tableName}_content`,

@@ -28,7 +28,7 @@ class Model {
     };
   }
 
-  // ?
+  // Affecte les données sur des clés seulement si celle-ci sont présentes dans le model de la table (dans l'attribut fields)
   set = (data) => {
     if (!data) return;
     for (let [key, value] of Object.entries(data)) {
@@ -55,8 +55,6 @@ class Model {
       sql += `AND ${key} = ? `;
       values.push(value);
     }
-
-    console.log("sql", sql, values);
     const [...rows] = await mysql.execute(sql, values);
     return rows;
   };
@@ -83,43 +81,6 @@ class Model {
     const result = await mysql.execute(sql, [id]);
     return result.affectedRows
   };
-
-  // // TODO A REGARDER ET A ADAPTER
-  // generateCondition(field, value, or, sqlParams) {
-  //   const firstChar = value.toString().slice(0, 1);
-  //   const conditionValue = ["%", "!", "$"].includes(firstChar)
-  //     ? value.toString().slice(1)
-  //     : value.toString();
-  //   const operator = or ? "OR" : "AND";
-  //   let where = "";
-  //   switch (firstChar) {
-  //     case "$": // Date
-  //       const betweenValues = conditionValue.split(",");
-  //       where += `${operator} ${field} BETWEEN ? AND ?`;
-  //       sqlParams.push(
-  //         `${betweenValues[0]} 00:00:00`,
-  //         `${betweenValues[1]} 23:59:59`
-  //       );
-  //       break;
-  //     case "%": // Like
-  //       where += `${operator} ${field} LIKE `;
-  //       sqlParams.push(`%${conditionValue}%`);
-  //       break;
-  //     case "!": // Not
-  //       where += `${operator} ${field} ${"NULL" === value ? `IS NOT NULL` : `<> ?`
-  //         } `;
-  //       sqlParams.push(conditionValue);
-  //       break;
-  //     default:
-  //       // Equals
-  //       where += `${operator} ${field} ${"NULL" === value ? `IS NULL` : ` = ?`
-  //         } `;
-  //       sqlParams.push(conditionValue);
-  //       break;
-  // //   }
-
-  //   return where;
-  // }
 }
 
 module.exports = Model;

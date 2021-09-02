@@ -37,9 +37,7 @@ const execute = async (queryString, params = null) => {
     return result
 }
 
-const test = createConnection()
-
-module.exports = {
+module.exports = { 
     createPool,
     createConnection,
     execute
