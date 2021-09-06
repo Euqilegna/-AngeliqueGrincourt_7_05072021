@@ -44,7 +44,6 @@ export class AxiosClientService {
           'user-id': userId
         }
       }
-      console.log('config', config)
       return config
     },
       (error) => {
@@ -91,7 +90,6 @@ export class AxiosClientService {
     return this.axiosCall('get', options);
   }
   public async post<T>(options: PostOptions): Promise<T> {
-    console.log('post', options)
     return this.axiosCall('post', options);
   }
   public async put<T>(options: PostOptions): Promise<T> {
