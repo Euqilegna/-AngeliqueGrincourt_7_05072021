@@ -1,5 +1,7 @@
 const Model = require("./model");
 const crypto = require('crypto')
+const MyCrypto = require("../../tools/crypto");
+const myCrypto = new MyCrypto();
 
 const tableName = "users";
 const primaryKey = `${tableName}_id`;
@@ -19,6 +21,7 @@ class Users extends Model {
     this.superCreate = this.create
     this.create = async () => {
       this.data[`${tableName}_pwd`] = crypto.createHash('md5').update(this.data[`${tableName}_pwd`]).digest('hex')
+      this.data[`${tableName}_mail`] = myCrypto.encrypt(this.data[`${tableName}_mail`])
       return await this.superCreate()
     }
   }

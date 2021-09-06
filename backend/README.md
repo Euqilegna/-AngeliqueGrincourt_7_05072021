@@ -8,6 +8,11 @@
         DB_PASSWORD=changezmoi
         DB_DATABASE=agrincourt_groupomania
         ADMIN_PWD=admin123
+        
+        # Clé et algo pour crypter les données
+        # Laisser l'algo sur aes128, la clé doit faire 16 charactères
+        CRYPTO_KEY=azertyuiopqsdfgh
+        CRYPTO_ALGO=aes128
 
         # Route api, laisser tel quel
         BASE_API=/api

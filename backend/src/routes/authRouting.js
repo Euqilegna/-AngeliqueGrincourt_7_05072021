@@ -4,7 +4,9 @@ const Users = require("../database/table/users");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const crypto = require('crypto')
+const MyCrypto = require("../tools/crypto");
 
+const myCrypto = new MyCrypto();
 const baseUrl = `${BASE_API}${BASE_AUTH}`;
 
 router.post(`${baseUrl}`, async (req, res) => {
@@ -16,7 +18,7 @@ router.post(`${baseUrl}`, async (req, res) => {
 
   const usersTable = new Users();
   const users = await usersTable.getByField({
-    users_mail: users_mail
+    users_mail:  myCrypto.encrypt(users_mail)
   });
 
   if (!users.length) {

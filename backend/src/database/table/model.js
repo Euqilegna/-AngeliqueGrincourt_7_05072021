@@ -35,7 +35,6 @@ class Model {
     }
   };
 
-
   getById = async (id) => {
     const sql = `SELECT * FROM ${this.tableName} WHERE ${this.primaryKey} = ?`; 
     const [...rows] = await mysql.execute(sql, [id]);

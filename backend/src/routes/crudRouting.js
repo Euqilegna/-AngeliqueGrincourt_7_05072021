@@ -30,6 +30,7 @@ for (const mapping of pathList) {
     res.json(data);
   });
 
+  //POST
   router.post(`${baseUrl}`, async (req, res) => {
     console.log("post", baseUrl);
     const model = new Model();

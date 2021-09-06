@@ -4,6 +4,7 @@ const http = require("http");
 const app = require("./app");
 const InstallSchema = require('./src/database/install-schema');
 const crypto = require('crypto');
+const MyCrypto = require("./src/tools/crypto");
 const Users = require('./src/database/table/users');
 const mysql = require('./src/database/mysql')
 const { ADMIN_PWD } = process.env
@@ -25,6 +26,7 @@ const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
 const server = http.createServer(app);
+const myCrypto = new MyCrypto();
 server.listen(process.env.PORT || 3000, () => {
   new InstallSchema().processCreateDatabase().then(async (result) => {
     console.log('> Install schema is over')
@@ -34,8 +36,8 @@ server.listen(process.env.PORT || 3000, () => {
     if (!checkAdminAccount.length) {
       const md5Password = crypto.createHash('md5').update(ADMIN_PWD).digest('hex')
       const params = [
-        'admin', 'admin', 'admin@admin.fr', md5Password, 1,
-        'admin2', 'admin2', 'admin2@admin.fr', md5Password, 1
+        'admin', 'admin', myCrypto.encrypt('admin@admin.fr'), md5Password, 1,
+        'admin2', 'admin2', myCrypto.encrypt('admin2@admin.fr'), md5Password, 1
       ]
       mysql.execute(`
           INSERT INTO users (users_lastName, users_firstName, users_mail, users_pwd, users_isAdmin) 
