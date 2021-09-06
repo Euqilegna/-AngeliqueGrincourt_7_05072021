@@ -19,7 +19,7 @@ class Model {
       const keys = Object.keys(this.data);
       const values = Object.values(this.data);
 
-      const valuesLength = "?,".repeat(keys.length).slice(0, -1); // Exemple 3 champs : ?,?,?, => slice => ?,?,?
+      const valuesLength = "?,".repeat(keys.length).slice(0, -1);
       const sql = `INSERT INTO ${this.tableName} (${keys.join(
         ","
       )}) VALUES (${valuesLength})`;
@@ -28,7 +28,6 @@ class Model {
     };
   }
 
-  // Affecte les données sur des clés seulement si celle-ci sont présentes dans le model de la table (dans l'attribut fields)
   set = (data) => {
     if (!data) return;
     for (let [key, value] of Object.entries(data)) {
@@ -38,19 +37,14 @@ class Model {
 
 
   getById = async (id) => {
-    const sql = `SELECT * FROM ${this.tableName} WHERE ${this.primaryKey} = ?`; // "?" au lieu de passer l'id pour eviter les injections sql
+    const sql = `SELECT * FROM ${this.tableName} WHERE ${this.primaryKey} = ?`; 
     const [...rows] = await mysql.execute(sql, [id]);
     return rows;
   };
 
-  // fields : key (champ de la table) => valeur à filtrer
-  // Exemple :
-  //    MATABLE (champ1, champ2)
-  //    fields = { champ1: 'ma valeur', champ2: 'à rechercher'}
   getByField = async (fields) => {
     let sql = `SELECT * FROM ${this.tableName} WHERE 1=1 `;
     const values = [];
-    //destructuration 
     for (let [key, value] of Object.entries(fields)) {
       sql += `AND ${key} = ? `;
       values.push(value);
