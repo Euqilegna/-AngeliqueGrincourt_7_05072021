@@ -76,9 +76,7 @@ export class UserProfilComponent implements OnInit {
     if (result) {
       this.authService.loggedInUser = result[0]
     }
-    console.log(this.authService.loggedInUser = result[0])
 
-    console.log(result)
     this.setForm('')
     this.userLogged()
   }
@@ -96,6 +94,5 @@ export class UserProfilComponent implements OnInit {
       data: 'Le compte à bien été supprimé !',
       duration: 2000
     });
-    console.log('result', result)
   }
 }

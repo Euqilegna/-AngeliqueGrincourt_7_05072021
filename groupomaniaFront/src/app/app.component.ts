@@ -22,7 +22,6 @@ export class AppComponent {
         authService.loggedInUser.users_pwd,
         authService.loggedInUser.users_birthday
       )
-      console.log("authService.currentUser ", authService.currentUser )
     }
   }
 }

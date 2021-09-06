@@ -57,7 +57,6 @@ export class PostFeedComponent implements OnInit {
 
   async initForm() {
     this.posts = await this.postService.getAllPost()
-    console.log(this.posts)
     this.posts.reverse()
   }
 
@@ -115,7 +114,6 @@ export class PostFeedComponent implements OnInit {
 
   async deletePost(postId) {
     const result = await this.postService.deletePost(postId)
-    console.log("post", result)
     if (result) {
       const indexOf = this.posts.findIndex(e => postId === e.id)
       this.posts.splice(indexOf, 1)
