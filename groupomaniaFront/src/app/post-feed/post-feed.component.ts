@@ -1,9 +1,9 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { async } from '@angular/core/testing';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { faThumbsUp, faTrashAlt, faThumbsDown, faThLarge } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faTrashAlt, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { ApiComment, Comment } from '../model/comment.model';
 import { Post } from '../model/post.model';
 import { User } from '../model/user.model';
@@ -11,6 +11,7 @@ import { AppConfigService } from '../_service/app-config.service';
 import { AuthService } from '../_service/auth.service';
 import { CommentService } from '../_service/comment.service';
 import { PostService } from '../_service/post.service';
+import { SnackBarComponent } from '../_ui/snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-post-feed',
@@ -19,6 +20,7 @@ import { PostService } from '../_service/post.service';
 })
 export class PostFeedComponent implements OnInit {
 
+  @ViewChild('inputPhoto') inputPhoto
   faThumbsUp = faThumbsUp
   faThumbsDown = faThumbsDown
   faTrashAlt = faTrashAlt
@@ -27,8 +29,8 @@ export class PostFeedComponent implements OnInit {
   userConnected = false
   createAPost: FormGroup
   createAComment: FormGroup
-
   posts: Array<Post> = []
+  
 
   constructor(
     public appConfigService: AppConfigService,
@@ -37,7 +39,8 @@ export class PostFeedComponent implements OnInit {
     public datepipe: DatePipe,
     private postService: PostService,
     private router: Router,
-    private commentService: CommentService) { }
+    private commentService: CommentService,
+    private snackBar: MatSnackBar) { }
 
 
 
@@ -90,8 +93,17 @@ export class PostFeedComponent implements OnInit {
     }
 
     const result: Post = await this.postService.createAPost(formData)
-    result.author = this.authService.currentUser
-    this.posts.unshift(result)
+    if (result) {
+      result.author = this.authService.currentUser
+      this.posts.unshift(result)
+      this.createAPost.reset()
+      this.inputPhoto.nativeElement.value = ""
+    } else {
+      this.snackBar.openFromComponent(SnackBarComponent, {
+        data: 'Il y a eu un problème à la création du post',
+        duration: 2000
+      });
+    }
   }
 
   async onSubmitNewComment(postId) {
@@ -118,7 +130,10 @@ export class PostFeedComponent implements OnInit {
       const indexOf = this.posts.findIndex(e => postId === e.id)
       this.posts.splice(indexOf, 1)
     } else {
-      // erreur ici
+      this.snackBar.openFromComponent(SnackBarComponent, {
+        data: 'Il y a eu un problème à la suppression du commentaire',
+        duration: 2000
+      });
     }
   }
 
@@ -126,10 +141,14 @@ export class PostFeedComponent implements OnInit {
     const result = await this.commentService.deleteComment(commentId)
     if (result) {
       const targetPost = this.posts.find(e => postId === e.id)
-      const indexOf =  targetPost.comments.findIndex(e => commentId === e.id)
+      const indexOf = targetPost.comments.findIndex(e => commentId === e.id)
       targetPost.comments.splice(indexOf, 1)
+    } else {
+      this.snackBar.openFromComponent(SnackBarComponent, {
+        data: 'Il y a eu un problème à la suppression du commentaire',
+        duration: 2000
+      });
     }
-    //err
   }
 
 }

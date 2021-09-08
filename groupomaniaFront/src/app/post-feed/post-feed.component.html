@@ -1,8 +1,9 @@
 <div class="createAPost">
     <form class="createAPost__writeAPost" [formGroup]="createAPost" (ngSubmit)="onSubmitNewPost()">
-        <input class="createAPost__input" formControlName="title" placeholder="Publier un post" type="text" name="post">
+        <input class="createAPost__input" formControlName="title" placeholder="Publier un post" type="text" name="post"
+            autocomplete="off">
         <div class="createAPost__rowButtons">
-            <input class="choosePic" type="file" name="photo" (change)="onFileSelect($event)"
+            <input class="choosePic" #inputPhoto type="file" name="photo" (change)="onFileSelect($event)"
                 accept="image/png, image/jpeg" />
             <button mat-button class="createAPost__btn" type="submit">Publier</button>
         </div>
@@ -30,7 +31,7 @@
         </div>
         <form class="writeAComment" [formGroup]="createAComment" (ngSubmit)="onSubmitNewComment(post.id)">
             <input class="writeAComment__input" formControlName="content" placeholder="Rédiger un commentaire"
-                type="text" name="search">
+                type="text" name="search" autocomplete="off">
         </form>
         <div class="post__postComments">
             <div class="post__postComment" *ngFor="let comment of post.comments">

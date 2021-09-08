@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from './model/user.model';
 import { AuthService } from './_service/auth.service';
 
@@ -8,9 +9,11 @@ import { AuthService } from './_service/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
     if (authService.isAuth) {
-      const test = localStorage.getItem('user');
       authService.loggedInUser = JSON.parse(
         localStorage.getItem('user') as string
       );
@@ -22,6 +25,7 @@ export class AppComponent {
         authService.loggedInUser.users_pwd,
         authService.loggedInUser.users_birthday
       )
+      this.router.navigate(['/home']);
     }
   }
 }
